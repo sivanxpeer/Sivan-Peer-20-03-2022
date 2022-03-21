@@ -5,6 +5,7 @@ import SearchBar from "../searchBar/SearchBar";
 
 const MainPage = () => {
   return (
+
     <div className="main-page">
         <SearchBar></SearchBar>
     </div>
