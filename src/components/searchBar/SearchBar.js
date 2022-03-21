@@ -28,7 +28,8 @@ const SearchBar = () => {
 
     return (
         <>
-            <form onSumbit={(e) => handleFormSubmit(e)} className="search-bar">
+            {/* <form onSumbit={(e) => handleFormSubmit(e)} className="search-bar"> */}
+            <form className="search-bar">
                 <input type="text" className="input-search" onChange={e => handleInputChange(e)} value={location}></input>
                 {/* <select>
                     <option>Eilat</option>
