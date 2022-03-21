@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import "./SearchBar.css"
 
 const SearchBar = () => {
@@ -6,10 +6,11 @@ const SearchBar = () => {
     const handleInputChange = (e) => {
         setLocation(e.target.value);
     }
-    const handleFormSubmit = (event) => {
-        event.preventDefault();
-        setLocation(event.target.value);
-    }
+    // const handleFormSubmit = (event) => {
+    //     event.preventDefault();
+    //     setLocation(event.target.value);
+    // }
+    
     //https://developer.accuweather.com/user/me/apps
     //API KEY 2GJ4abggxGIzQhsQ4S7DZTyfIUkOSzqC
 
