@@ -1,9 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom';
-import { Router } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { BrowserRouter } from 'react-router-dom';
-import MainPage from '../mainPage/MainPage';
 
 import "./Navbar.css";
 
