@@ -36,7 +36,7 @@ const SearchBar = () => {
                     <option>Eilat</option>
                     <option>New York</option>
                 </select> */}
-                <button type="submit" className="btn-search">Search</button>
+                <button type="submit" className="btn-search btn">Search</button>
             </form>
         </>
     )

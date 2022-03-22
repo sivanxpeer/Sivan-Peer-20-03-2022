@@ -3,9 +3,9 @@ import "./CardsList.css";
 import Card from '../card/Card';
 
 const CardsList = () => {
-    
+
     return (
-        <div className="cards-list">CardsList
+        <div className="cards-list">
             <Card></Card>
         </div>
     )

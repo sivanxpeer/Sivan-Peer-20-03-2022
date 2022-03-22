@@ -14,16 +14,17 @@ const Card = () => {
                 <p className="card-location">
                     Tel- Aviv, Israel
                 </p>
-                <p className="card-icon">
+                <div className="card-icon">
                     <img src={partialCloudy} alt="pc"></img>
-                    <img src={cloudy} alt="c"></img>
-                    <img src={rainy} alt="r"></img>
-                    <img src={sunny} alt="s"></img>
-                    <img src={thunder} alt="t"></img>
-                </p>
+                    {/* <img src={cloudy} alt="c"></img> */}
+                    {/* <img src={rainy} alt="r"></img> */}
+                    {/* <img src={sunny} alt="s"></img> */}
+                    {/* <img src={thunder} alt="t"></img> */}
+                    <span className="weather-title">Partial Cloudy</span>
+                </div>
+                    <div className="weather-wind">Wind: 0KMPH</div>
+                    <div className="weather-deg">23 ℃</div>
             </div>
-
-
         </div>
     )
 }

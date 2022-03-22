@@ -4,10 +4,29 @@
     --dark-main-text-color: #484A49;
     --dark-secondary-text-color:#F5F7F6;
     --light-blue-card-color:#0095C6;
+    --sun-color:#FFA500;
   }
 .card{
+
     background: var(--light-blue-card-color);
     color: var(--dark-secondary-text-color);
-    width: 170px;
-    height: 250px;
+    width: 200px;
+    height: 270px;
+    padding:2%;
+    margin: 5px auto;
+    z-index: 3;
+    opacity: 1;
+    box-shadow: rgba(38, 121, 204, 0.705) 3px 3px 3px;
+
+}
+.card-details{
+    margin: 1rem auto;
+    flex-direction: column;
+}
+.card-icon{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    margin:auto;
+
 }

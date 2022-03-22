@@ -9,6 +9,7 @@
   height: 2rem;
   position: sticky;
   top: 0;
+  left:0;
   background: var(--dark-secondary-text-color);
   align-items: center;
   /* color: var(--dark-secondaty-text-color); */
