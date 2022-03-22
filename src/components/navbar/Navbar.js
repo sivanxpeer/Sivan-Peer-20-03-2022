@@ -7,22 +7,26 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <ul className="navbar-list">
-                <li>
-                    <Link to="/">
-                        🌤
-                    </Link>
+                <li >
+                    <div className="navbar-list-left">
+                        <h1 className="navbar-header">
+                            HEROLO Wheather Task 🌤
+                        </h1>
+                    </div>
                 </li>
 
-                <li>
-                    <Link to="/">
-                        Home
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/favorites">
-                        Favorites
-                    </Link>
-                </li>
+                <div className="navbar-list-right">
+                    <li className="navbar-item">
+                        <Link to="/" className="navbar-link">
+                            Home
+                        </Link>
+                    </li>
+                    <li className="navbar-item">
+                        <Link to="/favorites" className="navbar-link">
+                            Favorites
+                        </Link>
+                    </li>
+                </div>
             </ul>
         </nav>
     )

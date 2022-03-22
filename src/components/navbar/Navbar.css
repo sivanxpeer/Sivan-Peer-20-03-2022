@@ -1,8 +1,56 @@
-.navbar{
-    background:red;
+:root {
+    --dark-background: #333533;
+    --light-background: #CFDBD5;
+    --dark-main-text-color: #484A49;
+    --dark-secondary-text-color:#F5F7F6;
+    --light-blue-card-color:#0095C6;
+  }
+.navbar {
+  height: 2rem;
+  position: sticky;
+  top: 0;
+  background: var(--dark-secondary-text-color);
+  align-items: center;
+  /* color: var(--dark-secondaty-text-color); */
 }
-.navbar-list{
-    display:flex;
-    list-style: none;
-    justify-content:space-between;
+.navbar-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+.navbar-header {
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.navbar-list-left {
+  margin-left: 6px;
+}
+.navbar-list-right {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+  padding: 5px;
+}
+.navbar-item {
+  font-weight: bold;
+  cursor: pointer;
+}
+.navbar-link{
+    /* color: #fff; */
+    color: var(--dark-secondaty-text-color);
+
+}
+@media screen and (min-width: 200px) and (max-width: 300px) {
+  .navbar {
+    height: auto;
+  }
+  .navbar-header {
+    font-size: 0.8rem;
+    padding: 5px;
+  }
+
+  .navbar-list-right {
+    gap: 0.5rem;
+  }
 }

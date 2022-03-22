@@ -1,8 +1,11 @@
 import React from 'react'
+import SearchBar from '../searchBar/SearchBar'
 
 const Favorites = () => {
   return (
-    <div>Favorites</div>
+    <div className="favorites">Favorites
+      <SearchBar></SearchBar>
+    </div>
   )
 }
 

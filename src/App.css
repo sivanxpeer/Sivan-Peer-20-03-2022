@@ -1,9 +1,20 @@
-*{
-  margin:0;
-  padding:0;
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
-.App {
-  text-align: center;
+
+:root {
+  --dark-background: #333533;
+  --light-background: #CFDBD5;
 }
 
+.App {
+  min-width: 280px;
+  height: 100vh;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

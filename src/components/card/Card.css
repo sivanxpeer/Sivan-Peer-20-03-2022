@@ -1,0 +1,13 @@
+:root {
+    --dark-background: #333533;
+    --light-background: #CFDBD5;
+    --dark-main-text-color: #484A49;
+    --dark-secondary-text-color:#F5F7F6;
+    --light-blue-card-color:#0095C6;
+  }
+.card{
+    background: var(--light-blue-card-color);
+    color: var(--dark-secondary-text-color);
+    width: 170px;
+    height: 250px;
+}

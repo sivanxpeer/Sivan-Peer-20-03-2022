@@ -7,11 +7,12 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar></Navbar>
-        <Route path="/" exact component={MainPage} />
-        <Route path="/favorites" exact component={Favorites} />
+        <Navbar>
+        </Navbar>
+          <Route path="/" exact component={MainPage} />
+          <Route path="/favorites" exact component={Favorites} />
       </Router>
-    </div>
+    </div >
   );
 }
 
