@@ -1,10 +1,10 @@
 import React from 'react'
 import "./Card.css";
 import partialCloudy from "../../assets/svgIcons/partialCloudy.svg"
-import cloudy from "../../assets/svgIcons/cloudy.svg"
-import rainy from "../../assets/svgIcons/rainy.svg"
-import sunny from "../../assets/svgIcons/sunny.svg"
-import thunder from "../../assets/svgIcons/thunder.svg"
+// import cloudy from "../../assets/svgIcons/cloudy.svg"
+// import rainy from "../../assets/svgIcons/rainy.svg"
+// import sunny from "../../assets/svgIcons/sunny.svg"
+// import thunder from "../../assets/svgIcons/thunder.svg"
 
 const Card = () => {
     return (
