@@ -15,11 +15,11 @@ const Card = () => {
                     Tel- Aviv, Israel
                 </p>
                 <p className="card-icon">
-                    <img src={partialCloudy}></img>
-                    <img src={cloudy}></img>
-                    <img src={rainy}></img>
-                    <img src={sunny}></img>
-                    <img src={thunder}></img>
+                    <img src={partialCloudy} alt="pc"></img>
+                    <img src={cloudy} alt="c"></img>
+                    <img src={rainy} alt="r"></img>
+                    <img src={sunny} alt="s"></img>
+                    <img src={thunder} alt="t"></img>
                 </p>
             </div>
 
