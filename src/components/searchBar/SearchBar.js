@@ -12,7 +12,6 @@ const SearchBar = () => {
     // }
     
     //https://developer.accuweather.com/user/me/apps
-    //API KEY 2GJ4abggxGIzQhsQ4S7DZTyfIUkOSzqC
 
     //autocomplete endpoint: 
     // http://dataservice.accuweather.com/locations/v1/cities/autocomplete

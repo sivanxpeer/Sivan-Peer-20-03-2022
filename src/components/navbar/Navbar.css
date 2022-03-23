@@ -9,7 +9,7 @@
   height: 2rem;
   position: sticky;
   top: 0;
-  left:0;
+  /* left:0; */
   background: var(--dark-secondary-text-color);
   align-items: center;
   /* color: var(--dark-secondaty-text-color); */
@@ -42,6 +42,15 @@
     color: var(--dark-secondaty-text-color);
 
 }
+/* @media screen and (min-width: 300px) and (max-width: 375px) {
+
+  .navbar {
+    height: auto;
+
+    position:fixed;
+    top:0;
+  }
+} */
 @media screen and (min-width: 200px) and (max-width: 300px) {
   .navbar {
     height: auto;

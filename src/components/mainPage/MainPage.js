@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import SearchBar from "../searchBar/SearchBar";
 // import Card from "../card/Card";
 import CardsList from "../cardsList/CardsList";
+import Forecast from "../forecast/Forecast";
 
 const MainPage = () => {
     const [isLightTheme, setIsLightTheme] = useState(true);
@@ -27,6 +28,7 @@ const MainPage = () => {
                 <button onClick={toggleTheme} className="btn toggle-theme">{btn}</button>
                 <SearchBar></SearchBar>
                 <CardsList></CardsList>
+                <Forecast></Forecast>
             </div>
         </div>
     )

@@ -1,32 +1,49 @@
 :root {
-    --dark-background: #333533;
-    --light-background: #CFDBD5;
-    --dark-main-text-color: #484A49;
-    --dark-secondary-text-color:#F5F7F6;
-    --light-blue-card-color:#0095C6;
-    --sun-color:#FFA500;
-  }
-.card{
+  --dark-background: #333533;
+  --light-background: #cfdbd5;
+  --dark-main-text-color: #484a49;
+  --dark-secondary-text-color: #f5f7f6;
+  --light-blue-card-color: #0095c6;
+  --sun-color: #ffa500;
+}
 
-    background: var(--light-blue-card-color);
-    color: var(--dark-secondary-text-color);
-    width: 200px;
-    height: 270px;
-    padding:2%;
-    margin: 5px auto;
-    z-index: 3;
-    opacity: 1;
-    box-shadow: rgba(38, 121, 204, 0.705) 3px 3px 3px;
+.card {
+  background: var(--light-blue-card-color);
+  color: var(--dark-secondary-text-color);
+  width: 200px;
+  height: 270px;
+  padding: 5px;
+  margin: 5px auto;
+  z-index: 3;
+  opacity: 1;
+  box-shadow: rgba(38, 121, 204, 0.705) 3px 3px 3px;
+  position: relative;
+}
+.card-details {
+  margin: 1rem auto;
+  flex-direction: column;
+}
+
+.card-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+.weather-deg{
+    font-weight: bold;
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+.card-location{
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom:1rem;
 
 }
-.card-details{
-    margin: 1rem auto;
-    flex-direction: column;
-}
-.card-icon{
-    display:flex;
-    justify-content:center;
-    align-items: center;
-    margin:auto;
+.weather-like {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
 
 }

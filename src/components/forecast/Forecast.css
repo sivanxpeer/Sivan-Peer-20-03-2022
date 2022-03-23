@@ -1,0 +1,11 @@
+.forecast{
+    border: 2px solid red;
+    height:40vh; 
+    margin-top:1rem;
+}
+@media screen and (min-width:280px) and (max-width:540px){
+    .forecast{
+    height:auto;
+
+    }
+}
