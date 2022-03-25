@@ -9,8 +9,9 @@ import useForecast from "../../hooks/useForecast";
 
 const MainPage = () => {
     const { forecast, text, isLoading ,submitRequest,getDailyForecast} = useForecast();
-    const [isLightTheme, setIsLightTheme] = useState(true);
+    const [isLightTheme, setIsLightTheme] = useState(false);
     const [btn, setBtn] = useState("Dark Mode");
+    
     const toggleTheme = () => {
         if (isLightTheme) {
             setIsLightTheme(false);
