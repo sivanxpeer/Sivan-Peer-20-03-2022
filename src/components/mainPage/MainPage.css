@@ -5,7 +5,7 @@
   --dark-secondary-text-color: #f5f7f6;
   --light-blue-card-color: #0095c6;
   --sun-color: #ffa500;
-  --btn-txt-color-hover: #9fd69f;
+  --btn-txt-color-hover: #0bc4ca;
 }
 
 .main-page {
@@ -32,6 +32,7 @@
 .toggle-theme {
   position: absolute;
   top: 4rem;
+  right: 0;
   z-index: 2;
   right: 0.5rem;
   border: none;
@@ -55,4 +56,18 @@
 
 .btn:hover {
   color: var(--btn-txt-color-hover);
+}
+
+
+@media screen and (min-width: 200px) and (max-width: 300px) {
+  .toggle-theme {
+    top: 2rem;
+  }
+}
+@media screen and (min-width: 300px) and (max-width: 600px) {
+  .toggle-theme {
+    top: 2rem;
+    /* height: 1rem; */
+    font-size: 0.7rem;
+  }
 }

@@ -2,7 +2,6 @@ import "./MainPage.css";
 
 import React, { useState } from 'react'
 import SearchBar from "../searchBar/SearchBar";
-// import Card from "../card/Card";
 import CardsList from "../cardsList/CardsList";
 import Forecast from "../forecast/Forecast";
 import useForecast from "../../hooks/useForecast";
@@ -25,7 +24,6 @@ const MainPage = () => {
 
     const onSubmit = (value) => {
         submitRequest(value);
-        // console.log({ value });
     }
     return (
 

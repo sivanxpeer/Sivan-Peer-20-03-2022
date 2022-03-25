@@ -18,7 +18,7 @@ const Card = () => {
     const handleLike = () => {
         setLiked(!liked);
     }
-    const { getDailyForcast, min, max, forecast, setForecast, text, category } = useForecast();
+    const { getDailyForcast, min, max, setForecast, text, category } = useForecast();
 
     // const getCity = async (city) => {
     //     const key = "cGVrCKM5Kpx3K0DCGjHlulQtEMEkacTy";
@@ -45,7 +45,6 @@ const Card = () => {
 
     return (
         <div className="card">
-            {console.log(forecast, text)}
             <div className="card-details">
                 <p className="card-location">
                     {city}

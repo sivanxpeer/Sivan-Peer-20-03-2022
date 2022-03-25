@@ -12,24 +12,6 @@ const SearchBar = ({submitSearch}) => {
             e.preventDefault();
             submitSearch(location);
     }
-    // const handleFormSubmit = (event) => {
-    //     setLocation(event.target.value);
-    // }
-    
-    //https://developer.accuweather.com/user/me/apps
-
-    //autocomplete endpoint: 
-    // http://dataservice.accuweather.com/locations/v1/cities/autocomplete
-
-    // get current weather endpoint:
-    // http://dataservice.accuweather.com/currentconditions/v1/{locationKey}
-
-    // 5-daily forecast endpoint:
-    // http://dataservice.accuweather.com/forecasts/v1/daily/5day/{locationKey}
-
-
-
-
 
     return (
         <>
