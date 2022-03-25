@@ -1,13 +1,18 @@
 import React, {  useState } from 'react'
 import "./SearchBar.css"
 
-const SearchBar = () => {
-    const [location, setLocation] = useState("Tel Aviv");
+const SearchBar = ({submitSearch}) => {
+
+    const [location, setLocation] = useState("");
+    
     const handleInputChange = (e) => {
         setLocation(e.target.value);
     }
+    const onSubmit =(e)=>{
+            e.preventDefault();
+            submitSearch(location);
+    }
     // const handleFormSubmit = (event) => {
-    //     event.preventDefault();
     //     setLocation(event.target.value);
     // }
     
@@ -28,14 +33,9 @@ const SearchBar = () => {
 
     return (
         <>
-            {/* <form onSumbit={(e) => handleFormSubmit(e)} className="search-bar"> */}
-            <form className="search-bar">
-                <input type="text" className="input-search" onChange={e => handleInputChange(e)} value={location}></input>
-                {/* <select>
-                    <option>Eilat</option>
-                    <option>New York</option>
-                </select> */}
-                <button type="submit" className="btn-search btn">Search</button>
+            <form className="search-bar" onSubmit={onSubmit}>
+                <input type="text" className="input-search" onChange={e => handleInputChange(e)} placeholder="Tel Aviv" value={location}></input>
+                <button type="submit" className="btn-search btn" onClick={onSubmit}>Search</button>
             </form>
         </>
     )

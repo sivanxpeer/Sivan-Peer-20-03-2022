@@ -1,6 +1,8 @@
 import axios from 'axios';
-const key = "2GJ4abggxGIzQhsQ4S7DZTyfIUkOSzqC";
-// http://dataservice.accuweather.com/currentconditions/v1/{locationKey}
-let baseUrl = axios.create(`http://dataservice.accuweather.com/currentconditions/v1/`);
-// ${locationKey}`)
-export default baseUrl;
+
+// const city = "tel%20aviv";
+const baseURL = `http://dataservice.accuweather.com//forecasts/v1/`;
+
+
+export default axios.create({baseURL});
+

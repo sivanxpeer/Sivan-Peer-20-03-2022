@@ -32,7 +32,6 @@
 }
 .weather-deg{
     font-weight: bold;
-    font-size: 2rem;
     margin-top: 1rem;
 }
 .card-location{
@@ -40,6 +39,10 @@
     font-size: 1.2rem;
     margin-bottom:1rem;
 
+}
+.weather-box{
+  display: flex;
+  flex-direction: column;
 }
 .weather-like {
   position: absolute;

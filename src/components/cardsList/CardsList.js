@@ -2,11 +2,11 @@ import React from 'react'
 import "./CardsList.css";
 import Card from '../card/Card';
 
-const CardsList = () => {
-
-    return (
-        <div className="cards-list">
-            <Card></Card>
+const CardsList = ({getDailyForecast,forecast,text}) => {
+        return (
+            <div className="cards-list">
+                {/* {mapTempToCard(forecast)} */}
+                <Card getDailyForecast={getDailyForecast} text={text} forecast={forecast}/>
         </div>
     )
 }

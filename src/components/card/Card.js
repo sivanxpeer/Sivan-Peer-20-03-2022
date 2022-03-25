@@ -1,42 +1,73 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./Card.css";
-import partialCloudy from "../../assets/svgIcons/partialCloudy.svg"
+import { HiHeart } from "react-icons/hi";
+// import partialCloudy from "../../assets/svgIcons/partialCloudy.svg"
 // import cloudy from "../../assets/svgIcons/cloudy.svg"
-// import rainy from "../../assets/svgIcons/rainy.svg"
+import rainy from "../../assets/svgIcons/rainy.svg"
 // import sunny from "../../assets/svgIcons/sunny.svg"
 // import thunder from "../../assets/svgIcons/thunder.svg"
-import { HiHeart } from "react-icons/hi";
+import useForecast from "../../hooks/useForecast";
+// import api from "../../apis/weatherApi";
+
 
 const Card = () => {
 
+    const [city, setCity] = useState("");
     const [liked, setLiked] = useState(false);
-    const colorLiked = "blue";
+    const [icon, setIcon] = useState("");
     const handleLike = () => {
         setLiked(!liked);
     }
-    const minMaxTemp = (min, max) => {
-        return (<>
-            <span>{min}&deg;C</span>
-            <span>{max}&deg;C</span>
-        </>
-        )
+    const { getDailyForcast, min, max, forecast, setForecast, text, category } = useForecast();
+
+    // const getCity = async (city) => {
+    //     const key = "cGVrCKM5Kpx3K0DCGjHlulQtEMEkacTy";
+    //     const query = `?apikey=${key}&q=${city}`;
+    //     const response = await api.get(query);
+    //     console.log(response);
+    //     setCity(city)
+    // }
+
+    const pickIcon = (category) => {
+        console.log(category)
+        if (category === "rain") {
+            setIcon("../../assets/svgIcons/rainy.svg");
+            console.log(icon)
+        }
+        else setIcon("../../assets/svgIcons/sunny.svg");
     }
+
+    useEffect(() => {
+        setForecast(getDailyForcast());
+        pickIcon(category);
+        setCity("Tel-Aviv");
+
+        // getCity(city);
+        // return()=>{
+        // clearImmediate()
+        // }
+    },[])// eslint-disable-line react-hooks/exhaustive-deps
+
     return (
         <div className="card">
+            {console.log(forecast, text)}
             <div className="card-details">
                 <p className="card-location">
-                    Tel- Aviv, Israel
+                    {city}
                 </p>
                 <div className="card-icon">
-                    <img src={partialCloudy} alt="pc"></img>
+                    {/* <img src={icon} alt="icon"></img> */}
                     {/* <img src={cloudy} alt="c"></img> */}
-                    {/* <img src={rainy} alt="r"></img> */}
+                    <img src={rainy} alt="r"></img>
                     {/* <img src={sunny} alt="s"></img> */}
                     {/* <img src={thunder} alt="t"></img> */}
-                    <span className="weather-title">Partial Cloudy</span>
+                    <span className="weather-title">{text}</span>
                 </div>
-                <div className="weather-wind">Wind: 0KMPH</div>
-                <div className="weather-deg">23 ℃</div>
+                <div className="weather-box">
+
+                    <div className="weather-deg">Low: {min}&deg;C</div>
+                    <div className="weather-deg">High: {max}&deg;C</div>
+                </div>
                 <HiHeart onClick={handleLike} size="40px" color={liked ? "blue" : undefined} className="weather-like"></HiHeart>
             </div>
         </div>
