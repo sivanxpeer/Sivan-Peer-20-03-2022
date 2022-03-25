@@ -41,11 +41,6 @@ const Card = () => {
         setForecast(getDailyForcast());
         pickIcon(category);
         setCity("Tel-Aviv");
-
-        // getCity(city);
-        // return()=>{
-        // clearImmediate()
-        // }
     },[])// eslint-disable-line react-hooks/exhaustive-deps
 
     return (
