@@ -26,7 +26,8 @@ const useForecast = () => {
         setMax(Math.floor(((dailyData[0].Temperature.Maximum.Value) - 32) * (5 / 9)));
         setForecast(dailyData);
         setText(txt);
-        setCategory(response.data.Headline.Category);
+        const cat = response.data.Headline.Category
+        setCategory(cat);
     }
 
     return {
