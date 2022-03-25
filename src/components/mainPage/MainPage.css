@@ -62,11 +62,13 @@
 @media screen and (min-width: 200px) and (max-width: 300px) {
   .toggle-theme {
     top: 2rem;
+    right:35%;
   }
 }
 @media screen and (min-width: 300px) and (max-width: 600px) {
   .toggle-theme {
     top: 2rem;
+    right:35%;
     /* height: 1rem; */
     font-size: 0.7rem;
   }
