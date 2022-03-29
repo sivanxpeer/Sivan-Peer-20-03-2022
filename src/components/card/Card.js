@@ -25,10 +25,6 @@ const Card = ({min,max,today,iconPhrase,icon,city}) => {
     return (
         <div className="card">
             <div className="card-details">
-                <p className="card-location">
-                    {city} 
-                    {/* TO check - should i remove city name from card and display only on top  */}
-                </p>
                 <p className="card-date">
                 {/* {showFormatedDate(today)} */}
                 {getDayName(today)}

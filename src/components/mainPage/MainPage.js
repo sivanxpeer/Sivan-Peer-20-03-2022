@@ -8,14 +8,14 @@ import api from "../../apis/weatherApi";
 import Today from "../today/Today";
 
 const MainPage = () => {
-    const { text, isLoading, submitRequest, getDailyForcast, setForecast, locationCode} = useForecast();
+    const { text, isLoading, submitRequest, getDailyForcast, setCity,forecast, locationCode,city} = useForecast();
     const [isLightTheme, setIsLightTheme] = useState(false);
     const [btn, setBtn] = useState("Dark Mode");
     const [weatherText,setWeatherText] = useState("");
     const [temp,setTemp] = useState("");
     const [icon,setIcon] = useState("");
     const [current,setCurrent] = useState("");
-    const key = "31meAtsMn1YWiYu56ZLYm0LFE2BsTGyV";
+    const key = "hv692BIMhovyTreoapsLfsN0u0FyPqtt";
 
 
     const toggleTheme = () => {
@@ -30,14 +30,18 @@ const MainPage = () => {
     }
 
     const onSubmit = (value) => {
+        // setForecast(getDailyForcast(locationCode));
         submitRequest(value);
-    }
+        console.log(forecast);
 
+    }
+    
     // const currentConditionsUrl = (locationKey) => `https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${apiKey}`;
     const getCurrentConditions = async (locationCode) => {
         try {
             const res = await api.get(`currentconditions/v1/${locationCode}?apikey=${key}`);
             // console.log(res.data)
+            setCity(res.data[0].LocalizedName)
             const txt = res.data[0].WeatherText;
             setWeatherText(txt);    
             const min = res.data[0].Temperature.Metric.Value
@@ -48,9 +52,10 @@ const MainPage = () => {
         catch (err) { console.log(err); }
     }
     useEffect(() => {
-        setForecast(getDailyForcast());
-        getCurrentConditions(locationCode)
-    }, [])// eslint-disable-line react-hooks/exhaustive-deps
+        getCurrentConditions(locationCode);
+        setCity()
+        
+    }, [city,locationCode,setCity])// eslint-disable-line react-hooks/exhaustive-deps
 
     return (
 
@@ -60,7 +65,7 @@ const MainPage = () => {
                 <button onClick={toggleTheme} className="btn toggle-theme">{btn}</button>
                 {isLoading && "Loading....."}
                 {!isLoading && <SearchBar submitSearch={onSubmit} />}
-                {<Today current={current} weatherText={weatherText} temp={temp} icon={icon}/>}
+                {<Today current={current} weatherText={weatherText} temp={temp} icon={icon} city={city}/>}
                 {/* {<CardsList getDailyForecast={getDailyForcast} text={text} />} */}
                 {<Forecast getDailyForecast={getDailyForcast} text={text} />}
             </div>

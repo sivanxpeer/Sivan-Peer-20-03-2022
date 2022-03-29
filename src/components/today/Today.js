@@ -1,26 +1,25 @@
-import React,{useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import useForecast from '../../hooks/useForecast';
 import { HiHeart } from "react-icons/hi";
 import "../card/Card.css"
 
-const Today = ({ icon, temp, weatherText,current }) => {
-    const { city,showFormatedDate } = useForecast();
+const Today = ({ icon, temp, weatherText, current }) => {
+    const { city, showFormatedDate, locationCode } = useForecast();
     const [liked, setLiked] = useState(false);
     const handleLike = () => {
         setLiked(!liked);
     }
-
-
+    useEffect(() => {
+        // getCurrentConditions(locationCode)
+    }, [locationCode])
     return (
         <div className="card">Today
-            {/* <img src={icon}></img> */}
             <div className="card-details">
                 <p className="card-location">
                     {city}
                 </p>
                 <p className="card-date">
                     {showFormatedDate(current)}
-                    {/* {getDayName(today)} */}
                 </p>
                 {/* {today} */}
                 <div className="card-icon">

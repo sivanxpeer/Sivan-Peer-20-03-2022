@@ -1,6 +1,4 @@
-import React, {  useState } from 'react'
-// import api from "../../apis/weatherApi"
-// import useForecast from '../../hooks/useForecast';
+import React, {useEffect, useState } from 'react'
 
 import "./SearchBar.css"
 
@@ -8,23 +6,17 @@ const SearchBar = ({submitSearch}) => {
     // const key = "31meAtsMn1YWiYu56ZLYm0LFE2BsTGyV";
 
     const [location, setLocation] = useState("");
-    // const {autoCompleteToDisplay} = useForecast();
     
     const handleInputChange = (e) => {
         setLocation(e.target.value);
     }
+    useEffect(() => {
+    },[location])
+
     const onSubmit =(e)=>{
         e.preventDefault();
         submitSearch(location);
-        // autoCompleteToDisplay(location);
     }
-
-    //move to useForecast >?
-    // const getCurrentConditions = async(locationCode)=> {
-    //     const res = await api.get(`currentconditions/v1/${locationCode}?apikey=${key}`)
-    //     // setCurrentWeather()
-    //     console.log(res);
-    // }
     return (
         <>
             <form className="search-bar" onSubmit={onSubmit}>
