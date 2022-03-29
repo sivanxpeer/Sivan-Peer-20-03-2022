@@ -34,8 +34,8 @@
     font-weight: bold;
     margin-top: 1rem;
 }
-.card-location{
-    font-weight: bold;
+.card-location, .card-date{
+    /* font-weight: bold; */
     font-size: 1.2rem;
     margin-bottom:1rem;
 
