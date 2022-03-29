@@ -18,7 +18,12 @@ const useForecast = () => {
     const [city, setCity] = useState("");
     const min = 0;
     const max = 0;
-    const key = "cGVrCKM5Kpx3K0DCGjHlulQtEMEkacTy";
+    // const key = "cGVrCKM5Kpx3K0DCGjHlulQtEMEkacTy";
+    // const key = "2GJ4abggxGIzQhsQ4S7DZTyfIUkOSzqC";
+    // const key = "MvT3AGepZRVg3VgWQd3faYF3eWut1n9u";
+    const key = "31meAtsMn1YWiYu56ZLYm0LFE2BsTGyV"; 
+
+
     // const key = process.env.KEY;
 
     // const locationsSearchUrl = (userInput) => `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${userInput}&language=en-us`;
@@ -83,7 +88,7 @@ const useForecast = () => {
         //make an array to return todays name
         let res = ''
         let currentDate = new Date(date)
-        res = currentDate.getDate() + '/' + (currentDate.getMonth() + 1) + ', ' + (currentDate.getHours() + 3).toPrecision(2) + ':' + (currentDate.getMinutes());
+        res = currentDate.getDate() + '/' + (currentDate.getMonth() + 1) + ', ' + (currentDate.getHours()).toPrecision(2) + ':' + (currentDate.getMinutes());
         return res
     }
 
@@ -92,8 +97,8 @@ const useForecast = () => {
         return days[new Date(date).getDay()]
     }
     return {
-        forecast, setForecast, category, text, isLoading, min, max,
-        getDailyForcast, submitRequest, locationsList, setLocationsList, autoCompleteToDisplay, showFormatedDate, today, forecastToCards, city, getDayName
+        forecast, setForecast, category, text, isLoading, min, max,locationCode,key,
+        getDailyForcast, submitRequest, locationsList, setLocationsList, autoCompleteToDisplay, showFormatedDate, today, setToday, forecastToCards, city, getDayName
     }
 }
 

@@ -1,22 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, {  useEffect } from 'react'
 import "./Card.css";
-import { HiHeart } from "react-icons/hi";
 import useForecast from "../../hooks/useForecast";
-// import api from "../../apis/weatherApi";
 
 
 const Card = ({min,max,today,iconPhrase,icon,city}) => {
     // const [currentWeather,setCurrentWeather] = useState();
     const {getDayName} = useForecast();
     // const [city, setCity] = useState("");
-    const [liked, setLiked] = useState(false);
-    const handleLike = () => {
-        setLiked(!liked);
-    }
-
+   
     // const [resource, setResource] = useState();
 
-    // const currentConditionsUrl = (locationKey) => `https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${apiKey}`;
 
     useEffect(() => {
         // setForecast(getDailyForcast());
@@ -50,7 +43,7 @@ const Card = ({min,max,today,iconPhrase,icon,city}) => {
                     <div className="weather-deg">Low: {min}&deg;C</div>
                     <div className="weather-deg">High: {max}&deg;C</div>
                 </div>
-                <HiHeart onClick={handleLike} size="40px" color={liked ? "blue" : undefined} className="weather-like"></HiHeart>
+                {/* <HiHeart onClick={handleLike} size="40px" color={liked ? "blue" : undefined} className="weather-like"></HiHeart> */}
             </div>
             {/* <button onClick={() => setResource('5 Daily forecast')}>5 Daily forecast</button>
             <button onClick={() => setResource('search location')}>Seacrh location</button>

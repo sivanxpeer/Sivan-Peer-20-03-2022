@@ -5,7 +5,8 @@ import React, {  useState } from 'react'
 import "./SearchBar.css"
 
 const SearchBar = ({submitSearch}) => {
-    // const key = "cGVrCKM5Kpx3K0DCGjHlulQtEMEkacTy";
+    // const key = "31meAtsMn1YWiYu56ZLYm0LFE2BsTGyV";
+
     const [location, setLocation] = useState("");
     // const {autoCompleteToDisplay} = useForecast();
     
