@@ -10,8 +10,8 @@ const SearchBar = ({submitSearch}) => {
     const handleInputChange = (e) => {
         setLocation(e.target.value);
     }
-    useEffect(() => {
-    },[location])
+    // useEffect(() => {
+    // },[location])
 
     const onSubmit =(e)=>{
         e.preventDefault();

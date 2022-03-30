@@ -1,33 +1,17 @@
-import React, {  useEffect } from 'react'
+import React, { useEffect } from 'react'
 import "./Card.css";
 import useForecast from "../../hooks/useForecast";
 
 
-const Card = ({min,max,today,iconPhrase,icon,city}) => {
-    // const [currentWeather,setCurrentWeather] = useState();
-    const {getDayName} = useForecast();
-    // const [city, setCity] = useState("");
-   
-    // const [resource, setResource] = useState();
-
-
-    useEffect(() => {
-        // setForecast(getDailyForcast());
-        // pickIcon(category);
-        // setCity("");
-
-    }, [])// eslint-disable-line react-hooks/exhaustive-deps
-
-    // useEffect(() => {
-
-    // },[resource])
+const Card = ({ min, max, today, iconPhrase, icon, city }) => {
+    const { getDayName } = useForecast();
 
     return (
         <div className="card">
             <div className="card-details">
                 <p className="card-date">
-                {/* {showFormatedDate(today)} */}
-                {getDayName(today)}
+                    {/* {showFormatedDate(today)} */}
+                    {getDayName(today)}
                 </p>
                 {/* {today} */}
                 <div className="card-icon">
@@ -41,10 +25,6 @@ const Card = ({min,max,today,iconPhrase,icon,city}) => {
                 </div>
                 {/* <HiHeart onClick={handleLike} size="40px" color={liked ? "blue" : undefined} className="weather-like"></HiHeart> */}
             </div>
-            {/* <button onClick={() => setResource('5 Daily forecast')}>5 Daily forecast</button>
-            <button onClick={() => setResource('search location')}>Seacrh location</button>
-            <button onClick={() => setResource('autocomplete')}>autocomplete</button>
-            <h2>{resource}</h2> */}
         </div>
     )
 }

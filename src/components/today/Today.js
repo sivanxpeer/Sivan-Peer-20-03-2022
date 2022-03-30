@@ -13,7 +13,7 @@ const Today = ({ icon, temp, weatherText, current }) => {
         // getCurrentConditions(locationCode)
     }, [locationCode])
     return (
-        <div className="card">Today
+        <div className="card">Now
             <div className="card-details">
                 <p className="card-location">
                     {city}
@@ -21,7 +21,6 @@ const Today = ({ icon, temp, weatherText, current }) => {
                 <p className="card-date">
                     {showFormatedDate(current)}
                 </p>
-                {/* {today} */}
                 <div className="card-icon">
                     <img src={icon} alt="icon"></img>
                     <span className="weather-title">{weatherText}</span>
