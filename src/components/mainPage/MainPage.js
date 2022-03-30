@@ -8,19 +8,22 @@ import api from "../../apis/weatherApi";
 import Today from "../today/Today";
 
 const MainPage = () => {
-    const { text, isLoading, submitRequest, getDailyForcast, forecast, locationCode, city } = useForecast();
+    const { text, isLoading, submitRequest, getDailyForcast, forecast, locationCode, city, today, showFormatedDate } = useForecast();
     const [isLightTheme, setIsLightTheme] = useState(false);
     const [btn, setBtn] = useState("Dark Mode");
     const [weatherText, setWeatherText] = useState("");
     const [temp, setTemp] = useState("");
     const [icon, setIcon] = useState("");
     const [current, setCurrent] = useState("");
-    const [date,setDate] = useState("");
-    const key = "PzCe9Abd7BXGtuTcRlt4TIkHjGWVeL4p";
+    const [date, setDate] = useState("");
+    const [isDayTime, setIsDayTime] = useState(false);
+    const key = "8uWCZazrMJtHbCfSIBUmiYEP5B28qDwR";
 
 
     const toggleTheme = () => {
+        
         if (isLightTheme) {
+            console.log(isDayTime)
             setIsLightTheme(false);
             setBtn("Dark Mode");
         }
@@ -33,6 +36,7 @@ const MainPage = () => {
     const onSubmit = (location) => {
         submitRequest(location);
         getDailyForcast(locationCode);
+        console.log(showFormatedDate(today))
         console.log(forecast);
     }
 
@@ -51,16 +55,30 @@ const MainPage = () => {
             }
             setDate(res.data[0].LocalObservationDateTime);
             setCurrent(res.data);
+            
+            
             return res.data
+
         }
         catch (err) { console.log(err); }
     }
-    
+
 
     useEffect(() => {
         getCurrentConditions(locationCode);
         // getDailyForcast(locationCode);
-        
+
+        if (current.isDayTime) {
+            setIsDayTime(true);
+            setIsLightTheme(false);
+            setBtn("Dark Mode");
+        }
+        else {
+            console.log(current)
+            setIsDayTime(false);
+            setIsLightTheme(true);
+            setBtn("Light Mode");
+        }
 
     }, [locationCode])// eslint-disable-line react-hooks/exhaustive-deps
 
@@ -71,7 +89,7 @@ const MainPage = () => {
                 <button onClick={toggleTheme} className="btn toggle-theme">{btn}</button>
                 {isLoading && "Loading....."}
                 {!isLoading && <SearchBar submitSearch={onSubmit} />}
-                {<Today current={current} weatherText={weatherText} temp={temp} icon={icon} city={city} date={date}/>}
+                {<Today current={current} weatherText={weatherText} temp={temp} icon={icon} city={city} date={date} />}
                 {<Forecast forecast={forecast} getDailyForecast={getDailyForcast} text={text} icon={icon} />}
             </div>
         </div>

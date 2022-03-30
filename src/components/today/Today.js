@@ -11,7 +11,7 @@ const Today = ({ icon, temp, weatherText, current, city, date }) => {
     }
     useEffect(() => {
         // getCurrentConditions(locationCode)
-
+// console.log(current)
     }, [locationCode,current,city])
     return (
         <div className="card" onClick={handleLike}>Now

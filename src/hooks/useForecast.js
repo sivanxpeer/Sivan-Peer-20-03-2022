@@ -13,10 +13,10 @@ const useForecast = () => {
     const [locationsList, setLocationsList] = useState([]); //object contains location name and code 
     const [locationsMatches, setLocationsMatches] = useState([])
     const [today, setToday] = useState("");
-    const [city, setCity] = useState("tel aviv");
+    const [city, setCity] = useState("Tel Aviv");
     const min = 0;
     const max = 0;
-    const key = "PzCe9Abd7BXGtuTcRlt4TIkHjGWVeL4p";
+    const key = "8uWCZazrMJtHbCfSIBUmiYEP5B28qDwR";
 
     // const key = process.env.KEY;
 
@@ -28,22 +28,24 @@ const useForecast = () => {
         else {
             console.log(data);
             setLocationsMatches(data);
-            const tmpCity = data[0].LocalizedName;
             const loc = data[0].Key;
-            console.log(loc);
+            // console.log(loc);
             setCity(data[0].LocalizedName);
             // console.log(city)
-            console.log(tmpCity);
+            // console.log(tmpCity);
             setLocationCode(loc);
+            setisLoading(true);
             const df = await getDailyForcast(loc);
             if (df.length === 0 ) {
                 console.log("something went wrong");
             }
             else {
-                console.log(df)
+                // console.log(df)
                 setForecast(df.DailyForecasts);
                 forecastToCards(df.DailyForecasts);
+                setisLoading(false)
             }
+            return data;
         }
     }
 
@@ -74,13 +76,9 @@ const useForecast = () => {
         // // TODO - function to toggle C/F
     }
 
-// useEffect(() => {
-//     clearTimeout(1000)
-// },forecast)
     useEffect(() => {
         setLocationCode(locationCode);
         getDailyForcast(locationCode);
-
     }, [setForecast,locationCode]);
     // eslint-disable-line react-hooks/exhaustive-deps
 
