@@ -15,7 +15,7 @@ const MainPage = () => {
     const [temp, setTemp] = useState("");
     const [icon, setIcon] = useState("");
     const [current, setCurrent] = useState("");
-    const key = "iSIGrkC84GRckSj0offgzArLlQHGiorC";
+    const key = "N2fB3GjIz24eJLIHFGBWQhBvSbPZASKN";
 
 
     const toggleTheme = () => {

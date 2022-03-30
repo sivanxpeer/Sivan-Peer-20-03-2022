@@ -16,7 +16,7 @@ const useForecast = () => {
     const [city, setCity] = useState("Tel Aviv");
     const min = 0;
     const max = 0;
-    const key = "iSIGrkC84GRckSj0offgzArLlQHGiorC";
+    const key = "N2fB3GjIz24eJLIHFGBWQhBvSbPZASKN";
 
     // const key = process.env.KEY;
 
