@@ -1,19 +1,22 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 
 import "./SearchBar.css"
 
-const SearchBar = ({submitSearch}) => {
-    // const key = "31meAtsMn1YWiYu56ZLYm0LFE2BsTGyV";
+const SearchBar = ({ submitSearch }) => {
 
-    const [location, setLocation] = useState("");
+    const [location, setLocation] = useState("Tel Aviv");
+    
+    useEffect(() => {
+    }, [location])
     
     const handleInputChange = (e) => {
         setLocation(e.target.value);
     }
-    useEffect(() => {
-    },[location])
-
-    const onSubmit =(e)=>{
+    
+    const handleFocus = () => {
+        setLocation("");
+    }
+    const onSubmit = (e) => {
         e.preventDefault();
         setLocation(e.target.value);
         submitSearch(location);
@@ -21,7 +24,7 @@ const SearchBar = ({submitSearch}) => {
     return (
         <>
             <form className="search-bar" onSubmit={onSubmit}>
-                <input type="text" className="input-search" onChange={e => handleInputChange(e)} placeholder="Tel Aviv" value={location}></input>
+                <input type="text" className="input-search" onChange={e => handleInputChange(e)} placeholder={location} value={location} onFocus={handleFocus}></input>
                 <button type="submit" className="btn-search btn" onClick={onSubmit}>Search</button>
             </form>
         </>
