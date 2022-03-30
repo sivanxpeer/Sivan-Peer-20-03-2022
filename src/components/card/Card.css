@@ -18,6 +18,7 @@
   opacity: 1;
   box-shadow: rgba(38, 121, 204, 0.705) 3px 3px 3px;
   position: relative;
+  cursor: pointer;
 }
 .card-details {
   margin: 1rem auto;

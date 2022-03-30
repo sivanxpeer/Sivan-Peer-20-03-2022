@@ -13,7 +13,7 @@ const Today = ({ icon, temp, weatherText, current }) => {
         // getCurrentConditions(locationCode)
     }, [locationCode])
     return (
-        <div className="card">Now
+        <div className="card" onClick={handleLike}>Now
             <div className="card-details">
                 <p className="card-location">
                     {city}
@@ -28,7 +28,7 @@ const Today = ({ icon, temp, weatherText, current }) => {
                 <div className="weather-box">
                     <div className="weather-deg">{temp}&deg;C</div>
                 </div>
-                <HiHeart onClick={handleLike} size="40px" color={liked ? "blue" : undefined} className="weather-like"></HiHeart>
+                <HiHeart onClick={handleLike} size="40px" color={liked ? "white" : "darkgrey"} className="weather-like"></HiHeart>
             </div>
         </div>
     )

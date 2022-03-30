@@ -10,10 +10,8 @@ const Card = ({ min, max, today, iconPhrase, icon, city }) => {
         <div className="card">
             <div className="card-details">
                 <p className="card-date">
-                    {/* {showFormatedDate(today)} */}
                     {getDayName(today)}
                 </p>
-                {/* {today} */}
                 <div className="card-icon">
                     <img src={icon} alt="icon"></img>
                     <span className="weather-title">{iconPhrase}</span>
@@ -23,7 +21,6 @@ const Card = ({ min, max, today, iconPhrase, icon, city }) => {
                     <div className="weather-deg">Low: {min}&deg;C</div>
                     <div className="weather-deg">High: {max}&deg;C</div>
                 </div>
-                {/* <HiHeart onClick={handleLike} size="40px" color={liked ? "blue" : undefined} className="weather-like"></HiHeart> */}
             </div>
         </div>
     )
