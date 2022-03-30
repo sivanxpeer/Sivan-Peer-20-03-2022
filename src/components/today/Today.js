@@ -3,24 +3,24 @@ import useForecast from '../../hooks/useForecast';
 import { HiHeart } from "react-icons/hi";
 import "../card/Card.css"
 
-const Today = ({  icon, temp, weatherText, current,city }) => {
-    const {showFormatedDate, locationCode } = useForecast();
+const Today = ({ icon, temp, weatherText, current, city, date }) => {
+    const { showFormatedDate, locationCode } = useForecast();
     const [liked, setLiked] = useState(false);
     const handleLike = () => {
         setLiked(!liked);
     }
     useEffect(() => {
         // getCurrentConditions(locationCode)
-    
-    }, [locationCode,city,current])
+
+    }, [locationCode,current,city])
     return (
         <div className="card" onClick={handleLike}>Now
             <div className="card-details">
                 <p className="card-location">
-                    {city}
+                    {city ? city : "loading"}
                 </p>
                 <p className="card-date">
-                    {showFormatedDate(current)}
+                    {showFormatedDate(date)}
                 </p>
                 <div className="card-icon">
                     <img src={icon} alt="icon"></img>

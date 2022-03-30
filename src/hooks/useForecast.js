@@ -16,7 +16,7 @@ const useForecast = () => {
     const [city, setCity] = useState("tel aviv");
     const min = 0;
     const max = 0;
-    const key = "mCQOG7Nv5boiUOJKtvO7MmhqM6rHnBik";
+    const key = "4IW5v6yTHi7nTUMI6Em9x8JrraosmTKI";
 
     // const key = process.env.KEY;
 
@@ -81,7 +81,7 @@ const useForecast = () => {
         setLocationCode(locationCode);
         getDailyForcast(locationCode);
 
-    }, [locationCode, city,setForecast,today]);
+    }, [setForecast,locationCode]);
     // eslint-disable-line react-hooks/exhaustive-deps
 
     const forecastToCards = (forecast) => {

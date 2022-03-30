@@ -8,14 +8,15 @@ import api from "../../apis/weatherApi";
 import Today from "../today/Today";
 
 const MainPage = () => {
-    const { text, isLoading, submitRequest, getDailyForcast, setCity, forecast, locationCode, city } = useForecast();
+    const { text, isLoading, submitRequest, getDailyForcast, forecast, locationCode, city } = useForecast();
     const [isLightTheme, setIsLightTheme] = useState(false);
     const [btn, setBtn] = useState("Dark Mode");
     const [weatherText, setWeatherText] = useState("");
     const [temp, setTemp] = useState("");
     const [icon, setIcon] = useState("");
     const [current, setCurrent] = useState("");
-    const key = "mCQOG7Nv5boiUOJKtvO7MmhqM6rHnBik";
+    const [date,setDate] = useState("");
+    const key = "4IW5v6yTHi7nTUMI6Em9x8JrraosmTKI";
 
 
     const toggleTheme = () => {
@@ -38,8 +39,6 @@ const MainPage = () => {
     const getCurrentConditions = async (locationCode) => {
         try {
             const res = await api.get(`currentconditions/v1/${locationCode}?apikey=${key}`);
-            // console.log(res.data)
-            setCity(res.data[0].LocalizedName)
             const txt = res.data[0].WeatherText;
             setWeatherText(txt);
             const min = res.data[0].Temperature.Metric.Value
@@ -50,7 +49,8 @@ const MainPage = () => {
             else {
                 setIcon(`https://developer.accuweather.com/sites/default/files/${res.data[0].WeatherIcon}-s.png`);
             }
-            setCurrent(res.data[0].LocalObservationDateTime);
+            setDate(res.data[0].LocalObservationDateTime);
+            setCurrent(res.data);
             return res.data
         }
         catch (err) { console.log(err); }
@@ -58,7 +58,7 @@ const MainPage = () => {
     
 
     useEffect(() => {
-        setCurrent(getCurrentConditions(locationCode));
+        getCurrentConditions(locationCode);
         // getDailyForcast(locationCode);
         
 
@@ -71,7 +71,7 @@ const MainPage = () => {
                 <button onClick={toggleTheme} className="btn toggle-theme">{btn}</button>
                 {isLoading && "Loading....."}
                 {!isLoading && <SearchBar submitSearch={onSubmit} />}
-                {<Today current={current} weatherText={weatherText} temp={temp} icon={icon} city={city} />}
+                {<Today current={current} weatherText={weatherText} temp={temp} icon={icon} city={city} date={date}/>}
                 {<Forecast getDailyForecast={getDailyForcast} text={text} />}
             </div>
         </div>
