@@ -88,8 +88,13 @@
     /* height: 1rem; */
     font-size: 0.7rem;
   }
-  .light-mode, .dark-mode{
+  .light-mode{
     background:#66d9ff71;
+    height:100%;
+    /* margin-top: 0.2rem; */
+  }
+  .dark-mode{
+    background:#102f3adc;
     height:100%;
     /* margin-top: 0.2rem; */
   }
