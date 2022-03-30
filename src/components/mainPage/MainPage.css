@@ -5,7 +5,7 @@
   --dark-secondary-text-color: #f5f7f6;
   --light-blue-card-color: #0095c6;
   --sun-color: #ffa500;
-  --btn-txt-color-hover: #0bc4ca;
+  --btn-txt-color-hover: #bcdbdb;
 }
 
 .main-page {
@@ -90,13 +90,13 @@
   }
   .light-mode{
     background:#66d9ff71;
-    height:100%;
-    /* margin-top: 0.2rem; */
+    height:fit-content;
+    margin-top: 70rem;
   }
   .dark-mode{
     background:#102f3adc;
-    height:100%;
-    /* margin-top: 0.2rem; */
+    height:fit-content;
+    margin-top: 70rem;
   }
 }
 
