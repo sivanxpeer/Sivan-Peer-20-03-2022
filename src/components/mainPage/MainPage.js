@@ -15,7 +15,7 @@ const MainPage = () => {
     const [temp, setTemp] = useState("");
     const [icon, setIcon] = useState("");
     const [current, setCurrent] = useState("");
-    const key = "N2fB3GjIz24eJLIHFGBWQhBvSbPZASKN";
+    const key = "mCQOG7Nv5boiUOJKtvO7MmhqM6rHnBik";
 
 
     const toggleTheme = () => {
@@ -29,8 +29,9 @@ const MainPage = () => {
         }
     }
 
-    const onSubmit = (value) => {
-        submitRequest(value);
+    const onSubmit = (location) => {
+        submitRequest(location);
+        getDailyForcast(locationCode);
         console.log(forecast);
     }
 
@@ -50,14 +51,18 @@ const MainPage = () => {
                 setIcon(`https://developer.accuweather.com/sites/default/files/${res.data[0].WeatherIcon}-s.png`);
             }
             setCurrent(res.data[0].LocalObservationDateTime);
+            return res.data
         }
         catch (err) { console.log(err); }
     }
+    
 
     useEffect(() => {
-        getCurrentConditions(locationCode);
+        setCurrent(getCurrentConditions(locationCode));
+        // getDailyForcast(locationCode);
+        
 
-    }, [city, locationCode, setCity])// eslint-disable-line react-hooks/exhaustive-deps
+    }, [locationCode])// eslint-disable-line react-hooks/exhaustive-deps
 
     return (
 

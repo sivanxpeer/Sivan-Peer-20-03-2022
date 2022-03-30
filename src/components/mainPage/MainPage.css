@@ -20,6 +20,7 @@
   background: url("https://images.unsplash.com/photo-1465440567949-6062e3a8459f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
     no-repeat center center/cover;
   opacity: 0.9;
+  /* margin-top: 1.9rem; */
 }
 
 .light-mode {
@@ -65,30 +66,32 @@
 }
 
 @media screen and (min-width: 200px) and (max-width: 300px) {
- .light-mode{
+ .light-mode, .dark-mode{
    height:auto;
  }
-  .toggle-theme {
-    top: 2rem;
-    right:35%;
+ .toggle-theme {
+   top: 2rem;
+   right:35%;
   }
 }
 @media screen and (min-width: 300px) and (max-width: 600px) {
-
+  
   .main-page{
     margin-top: 1rem;
     height:auto;
-    background:#66d9ff71;
+    /* z-index:0; */
   }
-
+  
   .toggle-theme {
     top: 2rem;
     right:35%;
     /* height: 1rem; */
     font-size: 0.7rem;
   }
-  .light-mode{
+  .light-mode, .dark-mode{
+    background:#66d9ff71;
     height:100%;
+    /* margin-top: 0.2rem; */
   }
 }
 

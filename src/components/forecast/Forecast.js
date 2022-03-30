@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {  useEffect }from 'react'
 import "./Forecast.css";
 import useForecast from "../../hooks/useForecast";
 import Card from '../card/Card';
@@ -8,9 +8,9 @@ const Forecast = () => {
   const { text, forecast, city } = useForecast();
 
 
-  // useEffect(() => {
-  //   setForecast(getDailyForcast());
-  // }, [])
+  useEffect(() => {
+    // setForecast(getDailyForcast());
+  }, [forecast])
 
 
   const mapDaysToCards = (forecast) => {

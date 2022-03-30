@@ -13,22 +13,38 @@ const useForecast = () => {
     const [locationsList, setLocationsList] = useState([]); //object contains location name and code 
     const [locationsMatches, setLocationsMatches] = useState([])
     const [today, setToday] = useState("");
-    const [city, setCity] = useState("Tel Aviv");
+    const [city, setCity] = useState("tel aviv");
     const min = 0;
     const max = 0;
-    const key = "N2fB3GjIz24eJLIHFGBWQhBvSbPZASKN";
+    const key = "mCQOG7Nv5boiUOJKtvO7MmhqM6rHnBik";
 
     // const key = process.env.KEY;
 
     const submitRequest = async (userInput) => {
-        const res = await api.get(`/locations/v1/cities/autocomplete?apikey=${key}&q=${userInput}&language=en-us`)
-        setLocationsMatches(await res.data);
-        const tmpCity = await locationsMatches[0].LocalizedName;
-        const loc = await locationsMatches[0].Key;
-        setCity(tmpCity);
-        setLocationCode(loc);
-        const df = await getDailyForcast(loc);
-        setForecast(df.data.DailyForecasts);
+        const { data } = await api.get(`/locations/v1/cities/autocomplete?apikey=${key}&q=${userInput}&language=en-us`)
+        if (data.length === 0) {
+            console.log("no such location");
+        }
+        else {
+            console.log(data);
+            setLocationsMatches(data);
+            const tmpCity = data[0].LocalizedName;
+            const loc = data[0].Key;
+            console.log(loc);
+            setCity(data[0].LocalizedName);
+            // console.log(city)
+            console.log(tmpCity);
+            setLocationCode(loc);
+            const df = await getDailyForcast(loc);
+            if (df.length === 0 ) {
+                console.log("something went wrong");
+            }
+            else {
+                console.log(df)
+                setForecast(df.DailyForecasts);
+                // forecastToCards(df.DailyForecasts);
+            }
+        }
     }
 
 
@@ -54,14 +70,18 @@ const useForecast = () => {
 
         const date = response.data.Date;
         setToday(date);
-
+        return response.data;
         // // TODO - function to toggle C/F
     }
 
+// useEffect(() => {
+//     clearTimeout(1000)
+// },forecast)
     useEffect(() => {
         setLocationCode(locationCode);
         getDailyForcast(locationCode);
-    }, [locationCode,setCity])
+
+    }, [locationCode, city,setForecast,today]);
     // eslint-disable-line react-hooks/exhaustive-deps
 
     const forecastToCards = (forecast) => {
