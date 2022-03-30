@@ -8,7 +8,7 @@ import api from "../../apis/weatherApi";
 import Today from "../today/Today";
 
 const MainPage = () => {
-    const { text, isLoading, submitRequest, getDailyForcast, forecast, locationCode, city, today, showFormatedDate } = useForecast();
+    const { text, isLoading, submitRequest, getDailyForcast, forecast, locationCode, city } = useForecast();
     const [isLightTheme, setIsLightTheme] = useState(false);
     const [btn, setBtn] = useState("Dark Mode");
     const [weatherText, setWeatherText] = useState("");
@@ -36,8 +36,6 @@ const MainPage = () => {
     const onSubmit = (location) => {
         submitRequest(location);
         getDailyForcast(locationCode);
-        console.log(showFormatedDate(today))
-        console.log(forecast);
     }
 
     const getCurrentConditions = async (locationCode) => {
@@ -80,7 +78,7 @@ const MainPage = () => {
             setBtn("Light Mode");
         }
 
-    }, [locationCode])// eslint-disable-line react-hooks/exhaustive-deps
+    }, [locationCode,date])// eslint-disable-line react-hooks/exhaustive-deps
 
     return (
 
@@ -90,7 +88,7 @@ const MainPage = () => {
                 {isLoading && "Loading....."}
                 {!isLoading && <SearchBar submitSearch={onSubmit} />}
                 {<Today current={current} weatherText={weatherText} temp={temp} icon={icon} city={city} date={date} />}
-                {<Forecast forecast={forecast} getDailyForecast={getDailyForcast} text={text} icon={icon} />}
+                {<Forecast forecast={forecast} getDailyForecast={getDailyForcast} text={text} icon={icon} date={date}/>}
             </div>
         </div>
     )

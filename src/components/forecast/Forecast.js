@@ -5,12 +5,12 @@ import Card from '../card/Card';
 
 
 const Forecast = ({ text, forecast }) => {
-  const { city } = useForecast();
+  const { city,date } = useForecast();
 
 
   useEffect(() => {
     // setForecast();
-  }, [city, forecast])
+  }, [city, forecast,date])
 
 
   const mapDaysToCards = (forecast) => {
