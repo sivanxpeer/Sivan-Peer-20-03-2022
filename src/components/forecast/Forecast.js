@@ -1,16 +1,16 @@
-import React, {  useEffect }from 'react'
+import React, { useEffect } from 'react'
 import "./Forecast.css";
 import useForecast from "../../hooks/useForecast";
 import Card from '../card/Card';
 
 
-const Forecast = () => {
-  const { text, forecast, city } = useForecast();
+const Forecast = ({ text, forecast }) => {
+  const { city } = useForecast();
 
 
   useEffect(() => {
-    // setForecast(getDailyForcast());
-  }, [forecast])
+    // setForecast();
+  }, [city, forecast])
 
 
   const mapDaysToCards = (forecast) => {
@@ -21,7 +21,8 @@ const Forecast = () => {
           today={day.Date}
           iconPhrase={day.Day.IconPhrase}
           city={city}
-          icon={`https://developer.accuweather.com/sites/default/files/0${day.Day.Icon}-s.png`}
+          icon={(day.Day.Icon.toString().length!==2)?`https://developer.accuweather.com/sites/default/files/0${day.Day.Icon}-s.png`:`https://developer.accuweather.com/sites/default/files/${day.Day.Icon}-s.png`}
+          // icon={icon}
           min={Math.floor(((day.Temperature.Minimum.Value) - 32) * (5 / 9))}
           max={Math.floor(((day.Temperature.Maximum.Value) - 32) * (5 / 9))}
         />)

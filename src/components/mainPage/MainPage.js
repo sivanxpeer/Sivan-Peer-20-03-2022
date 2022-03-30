@@ -16,7 +16,7 @@ const MainPage = () => {
     const [icon, setIcon] = useState("");
     const [current, setCurrent] = useState("");
     const [date,setDate] = useState("");
-    const key = "4IW5v6yTHi7nTUMI6Em9x8JrraosmTKI";
+    const key = "9ckC3JPGDGEGycGv86Io3flOvYPUraLe";
 
 
     const toggleTheme = () => {
@@ -72,7 +72,7 @@ const MainPage = () => {
                 {isLoading && "Loading....."}
                 {!isLoading && <SearchBar submitSearch={onSubmit} />}
                 {<Today current={current} weatherText={weatherText} temp={temp} icon={icon} city={city} date={date}/>}
-                {<Forecast getDailyForecast={getDailyForcast} text={text} />}
+                {<Forecast forecast={forecast} getDailyForecast={getDailyForcast} text={text} icon={icon} />}
             </div>
         </div>
     )

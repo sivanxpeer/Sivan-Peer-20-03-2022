@@ -16,7 +16,7 @@ const useForecast = () => {
     const [city, setCity] = useState("tel aviv");
     const min = 0;
     const max = 0;
-    const key = "4IW5v6yTHi7nTUMI6Em9x8JrraosmTKI";
+    const key = "9ckC3JPGDGEGycGv86Io3flOvYPUraLe";
 
     // const key = process.env.KEY;
 
@@ -42,7 +42,7 @@ const useForecast = () => {
             else {
                 console.log(df)
                 setForecast(df.DailyForecasts);
-                // forecastToCards(df.DailyForecasts);
+                forecastToCards(df.DailyForecasts);
             }
         }
     }
