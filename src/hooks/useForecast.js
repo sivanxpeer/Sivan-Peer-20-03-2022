@@ -22,11 +22,13 @@ const useForecast = () => {
 
     const submitRequest = async (userInput) => {
         const res = await api.get(`/locations/v1/cities/autocomplete?apikey=${key}&q=${userInput}&language=en-us`)
-        setLocationsMatches(res.data);
-        const tmpCity = locationsMatches[0].LocalizedName;
-        const loc = locationsMatches[0];
+        setLocationsMatches(await res.data);
+        const tmpCity = await locationsMatches[0].LocalizedName;
+        const loc = await locationsMatches[0].Key;
         setCity(tmpCity);
-        setLocationCode(loc.Key);
+        setLocationCode(loc);
+        const df = await getDailyForcast(loc);
+        setForecast(df.data.DailyForecasts);
     }
 
 
@@ -43,7 +45,7 @@ const useForecast = () => {
         setisLoading(true);
         const response = await api.get(`/forecasts/v1/daily/5day/${locationCode}?apikey=${key}`);
         setisLoading(false);
-        const dailyData = response.data.DailyForecasts;
+        const dailyData = await response.data.DailyForecasts;
         setForecast(dailyData);
         const txt = response.data.Headline.Text;
         setText(txt);
@@ -59,7 +61,7 @@ const useForecast = () => {
     useEffect(() => {
         setLocationCode(locationCode);
         getDailyForcast(locationCode);
-    }, [locationCode])
+    }, [locationCode,setCity])
     // eslint-disable-line react-hooks/exhaustive-deps
 
     const forecastToCards = (forecast) => {
@@ -68,7 +70,7 @@ const useForecast = () => {
                 key={day.Date}
                 text={day.Day.IconPhrase}
                 today={day.Date}
-                // city={city}
+                city={city}
             />)
 
         })

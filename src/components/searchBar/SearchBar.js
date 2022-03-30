@@ -15,6 +15,7 @@ const SearchBar = ({submitSearch}) => {
 
     const onSubmit =(e)=>{
         e.preventDefault();
+        setLocation(e.target.value);
         submitSearch(location);
     }
     return (

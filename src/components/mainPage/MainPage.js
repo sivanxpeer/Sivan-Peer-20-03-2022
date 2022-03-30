@@ -32,7 +32,6 @@ const MainPage = () => {
     const onSubmit = (value) => {
         submitRequest(value);
         console.log(forecast);
-
     }
 
     const getCurrentConditions = async (locationCode) => {
@@ -44,7 +43,12 @@ const MainPage = () => {
             setWeatherText(txt);
             const min = res.data[0].Temperature.Metric.Value
             setTemp(min);
-            setIcon(`https://developer.accuweather.com/sites/default/files/0${res.data[0].WeatherIcon}-s.png`);
+            if (res.data[0].WeatherIcon.toString().length !== 2) {
+                setIcon(`https://developer.accuweather.com/sites/default/files/0${res.data[0].WeatherIcon}-s.png`);
+            }
+            else {
+                setIcon(`https://developer.accuweather.com/sites/default/files/${res.data[0].WeatherIcon}-s.png`);
+            }
             setCurrent(res.data[0].LocalObservationDateTime);
         }
         catch (err) { console.log(err); }
