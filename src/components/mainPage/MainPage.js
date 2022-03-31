@@ -16,7 +16,7 @@ const MainPage = () => {
     const [icon, setIcon] = useState("");
     const [current, setCurrent] = useState("");
     const [date, setDate] = useState("");
-    const [isDayTime, setIsDayTime] = useState(true);
+    // const [isDayTime, setIsDayTime] = useState(true);
     const key = "vuGrOAV3mPVVeEsH9qpAQPbhuA4cDNfU";
 
 
@@ -52,7 +52,7 @@ const MainPage = () => {
             }
             setDate(res.data[0].LocalObservationDateTime);
             setCurrent(res.data);
-            setIsDayTime(!res.data[0].IsDayTime);
+            // setIsDayTime(!res.data[0].IsDayTime);
             // if (isLightTheme) {
             //     setBtn("Light Mode");
             // }
