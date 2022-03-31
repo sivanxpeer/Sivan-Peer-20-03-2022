@@ -16,7 +16,8 @@ const MainPage = () => {
     const [icon, setIcon] = useState("");
     const [current, setCurrent] = useState("");
     const [date, setDate] = useState("");
-    const key = "sFTO1J37fFCocpP8diGxfnjwDXFQpGdR";
+    const [isDayTime, setIsDayTime] = useState(true);
+    const key = "vuGrOAV3mPVVeEsH9qpAQPbhuA4cDNfU";
 
 
     const toggleTheme = () => {
@@ -51,13 +52,13 @@ const MainPage = () => {
             }
             setDate(res.data[0].LocalObservationDateTime);
             setCurrent(res.data);
-            setIsLightTheme(!res.data[0].IsDayTime);
-            if (isLightTheme) {
-                setBtn("Light Mode");
-            }
-            else if(!isLightTheme) {
-                setBtn("Dark Mode");
-            }
+            setIsDayTime(!res.data[0].IsDayTime);
+            // if (isLightTheme) {
+            //     setBtn("Light Mode");
+            // }
+            // else if(!isLightTheme) {
+            //     setBtn("Dark Mode");
+            // }
             return res.data
 
         }
@@ -67,7 +68,19 @@ const MainPage = () => {
 
     useEffect(() => {
         getCurrentConditions(locationCode);
-    }, [locationCode, date, today,btn,isLightTheme])// eslint-disable-line react-hooks/exhaustive-deps
+        // if(isDayTime){
+            // console.log("night")
+            // toggleTheme()
+            // setIsLightTheme(true);
+            // setBtn("Light Mode");
+        // }
+        // else{
+            // toggleTheme();
+            // console.log("day")
+            // setIsLightTheme(false);
+            // setBtn("Dark Mode");
+        // }
+    }, [locationCode, date, today,btn])// eslint-disable-line react-hooks/exhaustive-deps
 
     return (
 
