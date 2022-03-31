@@ -3,10 +3,9 @@ import useForecast from '../../hooks/useForecast';
 import { HiHeart } from "react-icons/hi";
 import "../card/Card.css"
 
-const Today = ({ icon, temp, weatherText, current, city, date, isLightTheme }) => {
+const Today = ({ icon, temp, weatherText, current, city, date}) => {
     const { showFormatedDate, locationCode } = useForecast();
     const [liked, setLiked] = useState(false);
-    // const [isDayTime,setIsDayTime] = useState(true);
 
     const handleLike = () => {
         setLiked(!liked);
@@ -21,7 +20,6 @@ const Today = ({ icon, temp, weatherText, current, city, date, isLightTheme }) =
                     {city ? city : "loading"}
                 </p>
                 <p className="card-date">
-                    {/* {console.log(today)} */}
                     {showFormatedDate(date)}
                 </p>
                 <div className="card-icon">

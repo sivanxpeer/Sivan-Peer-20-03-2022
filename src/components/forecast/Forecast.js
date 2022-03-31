@@ -9,7 +9,6 @@ const Forecast = ({ text, forecast }) => {
 
 
   useEffect(() => {
-    // setForecast();
   }, [city, forecast,date])
 
 
@@ -22,7 +21,6 @@ const Forecast = ({ text, forecast }) => {
           iconPhrase={day.Day.IconPhrase}
           city={city}
           icon={(day.Day.Icon.toString().length!==2)?`https://developer.accuweather.com/sites/default/files/0${day.Day.Icon}-s.png`:`https://developer.accuweather.com/sites/default/files/${day.Day.Icon}-s.png`}
-          // icon={icon}
           min={Math.floor(((day.Temperature.Minimum.Value) - 32) * (5 / 9))}
           max={Math.floor(((day.Temperature.Maximum.Value) - 32) * (5 / 9))}
         />)
@@ -36,7 +34,6 @@ const Forecast = ({ text, forecast }) => {
 
       <div className="forecast">
         {forecast && mapDaysToCards(forecast)}
-        {/* {forecast && forecastToCards(forecast)}  */}
       </div>
     </div>
 

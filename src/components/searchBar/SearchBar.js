@@ -7,7 +7,6 @@ const SearchBar = ({ submitSearch }) => {
     const [location, setLocation] = useState("Search a City");
 
     useEffect(() => {
-        // setLocation("Tel-Aviv")
     }, [location])
     
     const handleInputChange = (e) => {

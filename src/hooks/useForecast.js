@@ -26,13 +26,9 @@ const useForecast = () => {
             console.log("no such location");
         }
         else {
-            console.log(data);
             setLocationsMatches(data);
             const loc = data[0].Key;
-            // console.log(loc);
             setCity(data[0].LocalizedName);
-            // console.log(city)
-            // console.log(tmpCity);
             setLocationCode(loc);
             setisLoading(true);
             const df = await getDailyForcast(loc);
@@ -40,7 +36,6 @@ const useForecast = () => {
                 console.log("something went wrong");
             }
             else {
-                // console.log(df)
                 setForecast(df.DailyForecasts);
                 forecastToCards(df.DailyForecasts);
                 setisLoading(false)
@@ -69,7 +64,6 @@ const useForecast = () => {
         setText(txt);
         const cat = await response.data.Headline.Category;
         setCategory(cat);
-
         const date = response.data.Date;
         setToday(date);
         return response.data;
@@ -96,9 +90,9 @@ const useForecast = () => {
 
     const showFormatedDate = (date) => {
         let res = ''
-        let currentDate = new Date(date)
-        res = currentDate.getDate() + '/' + (currentDate.getMonth() + 1) + ', ' + (currentDate.getHours()).toPrecision(2) + ':' + (currentDate.getMinutes());
-        // res = currentDate.getDate() + '/' + (currentDate.getMonth() + 1);
+        let currentDate = new Date(date);
+        // res = currentDate.getDate() + '/' + (currentDate.getMonth() + 1) + ', ' + (currentDate.getHours()).toPrecision(2) + ':' + (currentDate.getMinutes());
+        res = currentDate.getDate() + '/' + (currentDate.getMonth() + 1);
 
         return res
     }

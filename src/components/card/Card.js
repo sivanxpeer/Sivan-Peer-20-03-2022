@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React, { useEffect } from 'react'
 import "./Card.css";
 import useForecast from "../../hooks/useForecast";
 
@@ -7,8 +7,8 @@ const Card = ({ min, max, today, iconPhrase, icon, city }) => {
     const { getDayName } = useForecast();
 
     useEffect(() => {
+    }, [city])
 
-    },[city])
     return (
         <div className="card">
             <div className="card-details">
@@ -20,7 +20,6 @@ const Card = ({ min, max, today, iconPhrase, icon, city }) => {
                     <span className="weather-title">{iconPhrase}</span>
                 </div>
                 <div className="weather-box">
-
                     <div className="weather-deg">Low: {min}&deg;C</div>
                     <div className="weather-deg">High: {max}&deg;C</div>
                 </div>

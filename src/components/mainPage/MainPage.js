@@ -16,14 +16,12 @@ const MainPage = () => {
     const [icon, setIcon] = useState("");
     const [current, setCurrent] = useState("");
     const [date, setDate] = useState("");
-    // const [isDayTime, setIsDayTime] = useState(false);
     const key = "uCOyfw5qjINajtk2WC9o3BVzRKS6hQZX";
 
 
     const toggleTheme = () => {
 
         if (isLightTheme) {
-            // console.log(isDayTime)
             setIsLightTheme(false);
             setBtn("Dark Mode");
         }
@@ -63,21 +61,7 @@ const MainPage = () => {
 
     useEffect(() => {
         getCurrentConditions(locationCode);
-        if (current) {
-        //     if (current[0].IsDayTime === true) {
-                console.log(current[0].IsDayTime)
-        //         setIsLightTheme(false);
-        //         setBtn("Dark Mode");
-            }
-        //     else {
-        //         console.log(current[0].IsDayTime)
-        //         // console.log(current)
-        //         // setIsDayTime(false);
-        //         setIsLightTheme(true);
-        //         setBtn("Light Mode");
-        //     }
-        // }
-    }, [locationCode, date,isLightTheme,btn,today])// eslint-disable-line react-hooks/exhaustive-deps
+    }, [locationCode, date,today])// eslint-disable-line react-hooks/exhaustive-deps
 
     return (
 
