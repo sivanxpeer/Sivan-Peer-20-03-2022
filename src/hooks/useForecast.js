@@ -16,7 +16,7 @@ const useForecast = () => {
     const [city, setCity] = useState("Tel Aviv");
     const min = 0;
     const max = 0;
-    const key = "8uWCZazrMJtHbCfSIBUmiYEP5B28qDwR";
+    const key = "uCOyfw5qjINajtk2WC9o3BVzRKS6hQZX";
 
     // const key = process.env.KEY;
 
@@ -97,8 +97,8 @@ const useForecast = () => {
     const showFormatedDate = (date) => {
         let res = ''
         let currentDate = new Date(date)
-        // res = currentDate.getDate() + '/' + (currentDate.getMonth() + 1) + ', ' + (currentDate.getHours()).toPrecision(2) + ':' + (currentDate.getMinutes());
-        res = currentDate.getDate() + '/' + (currentDate.getMonth() + 1);
+        res = currentDate.getDate() + '/' + (currentDate.getMonth() + 1) + ', ' + (currentDate.getHours()).toPrecision(2) + ':' + (currentDate.getMinutes());
+        // res = currentDate.getDate() + '/' + (currentDate.getMonth() + 1);
 
         return res
     }
