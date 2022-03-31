@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 
 import "./SearchBar.css"
 
-const SearchBar = ({ submitSearch }) => {
+const SearchBar = ({ submitSearch ,submitRequest}) => {
+
 
     const [location, setLocation] = useState("Search a City");
 
@@ -11,6 +12,12 @@ const SearchBar = ({ submitSearch }) => {
     
     const handleInputChange = (e) => {
         setLocation(e.target.value);
+        
+        // submitRequest(e.target.value);
+        
+
+        // autoCompleteToDisplay(locationsList)
+        // console.log("locations list",locationsList);
     }
     
     const handleFocus = (e) => {

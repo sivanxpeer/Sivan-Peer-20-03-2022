@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import api from "../apis/weatherApi"
 import Card from "../components/card/Card"
-// import "../components/mainPage/MainPage.css";
+import "../components/mainPage/MainPage.css";
 // import dotenv from "";
 
 const useForecast = () => {
@@ -16,7 +16,7 @@ const useForecast = () => {
     const [city, setCity] = useState("Tel Aviv");
     const min = 0;
     const max = 0;
-    const key = "vuGrOAV3mPVVeEsH9qpAQPbhuA4cDNfU";
+    const key = "ciBgjgpG7Ay2lO2OuuRUxk2XdQS4NzOB";
 
     // const key = process.env.KEY;
 
@@ -27,6 +27,10 @@ const useForecast = () => {
         }
         else {
             setLocationsMatches(data);
+            setLocationsList(data);
+            // autoCompleteToDisplay(locationsList);
+
+            console.log(data);
             const loc = data[0].Key;
             setCity(data[0].LocalizedName);
             setLocationCode(loc);
@@ -45,10 +49,11 @@ const useForecast = () => {
     }
 
 
-    const autoCompleteToDisplay = (locations) => {
+    const autoCompleteToDisplay = async(locations) => {
         return locations.map((location) => {
-            return (<div className="auto-complete">
-                {location}
+            return (<div className="auto-complete" style={{width:"400px",height:"400px" ,display:"inline-block"}}>
+                {location.LocalizedName}
+                {location.key}
             </div>)
         })
     }
@@ -73,7 +78,7 @@ const useForecast = () => {
     useEffect(() => {
         setLocationCode(locationCode);
         getDailyForcast(locationCode);
-    }, [setForecast,locationCode]);
+    }, [setForecast,locationCode,locationsList]);
     // eslint-disable-line react-hooks/exhaustive-deps
 
     const forecastToCards = (forecast) => {
