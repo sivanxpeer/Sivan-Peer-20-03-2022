@@ -8,8 +8,8 @@ function App() {
     <div className="App">
       <Router>
         <Navbar/>
-          <Route path="/" exact component={MainPage} />
-          <Route path="/favorites" exact component={Favorites} />
+          <Route path="/" exact={true} component={MainPage} />
+          <Route path="/favorites" exact={true} component={Favorites} />
       </Router>
     </div >
   );

@@ -17,7 +17,7 @@ const Navbar = () => {
 
                 <div className="navbar-list-right">
                     <li className="navbar-item">
-                        <Link to="/" className="navbar-link" onClick={() => window.location.reload()}>
+                        <Link to="/" className="navbar-link">
                             Home
                         </Link>
                     </li>

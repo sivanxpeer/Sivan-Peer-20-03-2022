@@ -3,11 +3,13 @@ import "./Card.css";
 import useForecast from "../../hooks/useForecast";
 
 
-const Card = ({ min, max, today, iconPhrase, icon, city }) => {
+const Card = ({ min, max, today, iconPhrase, icon,liked}) => {
     const { getDayName } = useForecast();
 
     useEffect(() => {
-    }, [city])
+        // return()=>{setLiked(false)}
+        // return()=>{}
+    }, [liked])
 
     return (
         <div className="card">

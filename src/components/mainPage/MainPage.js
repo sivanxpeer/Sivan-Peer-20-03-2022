@@ -8,7 +8,7 @@ import api from "../../apis/weatherApi";
 import Today from "../today/Today";
 
 const MainPage = () => {
-    const { text, isLoading, submitRequest, getDailyForcast, forecast, locationCode, city, today,locationsList } = useForecast();
+    const { text, isLoading, submitRequest, getDailyForcast, forecast, locationCode, city, today,locationsList ,liked} = useForecast();
     const [isLightTheme, setIsLightTheme] = useState(false);
     const [btn, setBtn] = useState("Dark Mode");
     const [weatherText, setWeatherText] = useState("");
@@ -17,7 +17,9 @@ const MainPage = () => {
     const [current, setCurrent] = useState("");
     const [date, setDate] = useState("");
     // const [isDayTime, setIsDayTime] = useState(true);
-    const key = "ciBgjgpG7Ay2lO2OuuRUxk2XdQS4NzOB";
+    const key = "PW20yXzJQu1feJXGIGo24yvgzua2AxIA";
+    // const key = process.env.REACT_APP_SIVAN_PEER;
+
 
 
     const toggleTheme = () => {
@@ -92,7 +94,7 @@ const MainPage = () => {
                 <button onClick={toggleTheme} className="btn toggle-theme">{btn}</button>
                 {isLoading && "Loading....."}
                 {!isLoading && <SearchBar submitSearch={onSubmit} submitRequest={submitRequest} />}
-                {<Today current={current} isLightTheme={isLightTheme} weatherText={weatherText} temp={temp} today={today} icon={icon} city={city} date={date} />}
+                {<Today liked={liked}current={current} isLightTheme={isLightTheme} weatherText={weatherText} temp={temp} today={today} icon={icon} city={city} date={date} />}
                 {<Forecast forecast={forecast} getDailyForecast={getDailyForcast} text={text} icon={icon} date={date} />}
             </div>
         </div>

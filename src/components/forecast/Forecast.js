@@ -5,11 +5,12 @@ import Card from '../card/Card';
 
 
 const Forecast = ({ text, forecast }) => {
-  const { city,date } = useForecast();
+  const { city, date } = useForecast();
 
 
   useEffect(() => {
-  }, [city, forecast,date])
+    // return ()=>{setLiked(false)}
+  }, [city, forecast, date])
 
 
   const mapDaysToCards = (forecast) => {
@@ -20,7 +21,7 @@ const Forecast = ({ text, forecast }) => {
           today={day.Date}
           iconPhrase={day.Day.IconPhrase}
           city={city}
-          icon={(day.Day.Icon.toString().length!==2)?`https://developer.accuweather.com/sites/default/files/0${day.Day.Icon}-s.png`:`https://developer.accuweather.com/sites/default/files/${day.Day.Icon}-s.png`}
+          icon={(day.Day.Icon.toString().length !== 2) ? `https://developer.accuweather.com/sites/default/files/0${day.Day.Icon}-s.png` : `https://developer.accuweather.com/sites/default/files/${day.Day.Icon}-s.png`}
           min={Math.floor(((day.Temperature.Minimum.Value) - 32) * (5 / 9))}
           max={Math.floor(((day.Temperature.Maximum.Value) - 32) * (5 / 9))}
         />)
