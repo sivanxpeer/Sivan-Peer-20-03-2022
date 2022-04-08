@@ -14,7 +14,7 @@ export const SUBMIT_REQUEST = 'SUBMIT_REQUEST';
 export const GET_DAILY_FORCAST = 'GET_DAILY_FORCAST';
 //TODO: IS_LOADING
 
-const key = "rkJLOV4c1E2KGTB96czcEemPiMvbS75e";
+const key = "ozsFAiHo7lmrqFZyTuMbT162lV7u0Ave";
 
 //action creator for useForecast:
 export const submitRequest = async (userInput) => {
