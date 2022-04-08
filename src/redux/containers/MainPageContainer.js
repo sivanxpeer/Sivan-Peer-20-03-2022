@@ -9,14 +9,14 @@ const MainPageContainer = () => {
     const dispatch = useDispatch();
 
     const state = useSelector((state) => state.mainPage[0]);
-    console.log("state", state);
+    // console.log("state", state);
     const { locationCode } = useForecast();
     const [forecast, setForecast] = useState(null);
     const [text, setText] = useState("");
 
     const main = async () => {
         const curr = await getCurrentConditions(locationCode)
-        console.log("current", curr.payload)
+        // console.log("current", curr.payload)
         const fc = await getDailyForcast(locationCode)
         setForecast(fc.payload.DailyForecasts)
         setText(fc.payload.Headline.Text)
