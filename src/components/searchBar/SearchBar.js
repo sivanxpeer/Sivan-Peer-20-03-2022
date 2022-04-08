@@ -13,7 +13,7 @@ const SearchBar = ({ submitSearch, submitRequest }) => {
     const handleInputChange = async (e) => {
         setLocation(e.target.value);
         const d = await submitRequest(e.target.value);
-        // console.log("d",d.payload.LocalizedName)
+        console.log("d",d.payload.LocalizedName)
         // autoCompleteToDisplay(locationsList)
         // console.log("locations list",locationsList);
     }
