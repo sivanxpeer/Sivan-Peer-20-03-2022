@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import MainPage from '../../components/mainPage/MainPage';
 import useForecast from '../../hooks/useForecast';
 import { useSelector, useDispatch } from 'react-redux';
-import { getCurrentConditions } from '../actions';
+import { getCurrentConditions, getDailyForcast } from '../actions';
 
 
 const MainPageContainer = () => {
@@ -10,12 +10,17 @@ const MainPageContainer = () => {
 
     const state = useSelector((state) => state.mainPage[0]);
     console.log("state", state);
-    const { locationCode, forecast } = useForecast();
+    const { locationCode } = useForecast();
+    const [forecast, setForecast] = useState(null);
+    const [text, setText] = useState("");
 
     const main = async () => {
         const curr = await getCurrentConditions(locationCode)
-        console.log("current",curr.payload)
-        return dispatch(curr);
+        console.log("current", curr.payload)
+        const fc = await getDailyForcast(locationCode)
+        setForecast(fc.payload.DailyForecasts)
+        setText(fc.payload.Headline.Text)
+        return dispatch(curr, fc);
     }
 
     useEffect(() => {
@@ -26,8 +31,11 @@ const MainPageContainer = () => {
     return (
         <>
             {state && <MainPage
+                setForecast={setForecast}
+                setText={setText}
                 city={state.city}
                 forecast={forecast}
+                text={text}
                 btn={state.btn}
                 WeatherText={state.WeatherText}
                 date={state.date}
@@ -37,9 +45,6 @@ const MainPageContainer = () => {
         </>
     )
 }
-
-
-
 
 //no hooks>?
 

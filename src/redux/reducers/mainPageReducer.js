@@ -10,7 +10,9 @@ export const defaultState = {
     current: "",
     date: "",
     locationCode: "215854",
-    city: "Tel Aviv"
+    city: "Tel Aviv",
+    forecast:null,
+    text:"",
 }
 
 
@@ -34,9 +36,14 @@ const reducer = (state = defaultState, action) => {
                 ...state,
                 city: action.payload.LocalizedName,
                 locationCode: action.payload.Key
-                // city: action.payload[0].LocalizedName,
-                // locationCode: action.payload[0].Key
             }])
+        
+        case "GET_DAILY_FORCAST":
+            return({
+                ...state,
+                forecast: action.payload.DailyForecasts,
+                text:action.payload.Headline.Text
+            })
         default:
             return state;
     }

@@ -4,34 +4,43 @@ import api from "../../apis/weatherApi";
 
 // export const GET_CONDITIONS = 'GET_CONDITIONS';
 export const GET_CURRENT_CONDITIONS = 'GET_CURRENT_CONDITIONS';
-export const SUBMIT_REQUEST ='SUBMIT_REQUEST';
 
 // export const SET_IS_LIGHT_THEME = 'SET_IS_LIGHT_THEME';
 // export const SET_BTN = 'SET_BTN';
-// export const SET_WEATHER_TEXT = 'SET_WEATHER_TEXT';
-// export const GET_LOCATION_CODE = 'GET_LOCATION_CODE';
-///.......
-
-//action types for other components..
 
 
+// action types for useForcast
+export const SUBMIT_REQUEST = 'SUBMIT_REQUEST';
+export const GET_DAILY_FORCAST = 'GET_DAILY_FORCAST';
+//TODO: IS_LOADING
 
-
-
-const key = "tTLaYJ4EdNnA3QWnmwAGQBVho3PDvun9";
+const key = "rkJLOV4c1E2KGTB96czcEemPiMvbS75e";
 
 //action creator for useForecast:
 export const submitRequest = async (userInput) => {
     try {
         const { data } = await api.get(`/locations/v1/cities/autocomplete?apikey=${key}&q=${userInput}&language=en-us`)
-        return{
-            type:"SUBMIT_REQUEST",
+        return {
+            type: "SUBMIT_REQUEST",
             payload: data[0]
         }
     }
-    catch (err) { console.log(err)}
+    catch (err) { console.log(err) }
 }
 
+export const getDailyForcast = async (locationCode) => {
+    try {
+        const {data} = await api.get(`/forecasts/v1/daily/5day/${locationCode}?apikey=${key}`);
+        return {
+            type: "GET_DAILY_FORCAST",
+            payload: data
+        }
+
+    }
+    catch (err) { console.log(err) }
+}
+
+// TODO - function to toggle C/F
 
 //action creators for MainPage
 

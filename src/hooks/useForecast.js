@@ -1,61 +1,14 @@
 import { useState } from "react";
-import api from "../apis/weatherApi"
 import Card from "../components/card/Card"
 import "../components/mainPage/MainPage.css";
-// import dotenv from "";
 
 const useForecast = () => {
     const [forecast, setForecast] = useState(null);
-    const [isLoading, setisLoading] = useState(false);
-    const [text, setText] = useState("");
-    const [category, setCategory] = useState("");
     const [locationCode, setLocationCode] = useState("215854");
-    const [locationsList, setLocationsList] = useState([]); //object contains location name and code 
     const [locationsMatches, setLocationsMatches] = useState([])
-
-
-    // const dispatch = useDispatch();
-    // const state = useSelector((state) => state.mainPage);
-
-    // console.log(state)
 
     const [today, setToday] = useState("");
     const [city, setCity] = useState("Tel Aviv");
-    const min = 0;
-    const max = 0;
-    const key = "tTLaYJ4EdNnA3QWnmwAGQBVho3PDvun9";
-
-    // const key = process.env.REACT_APP_SIVAN_PEER;
-    // console.log(process.env.SIVAN_PEER)
-
-    // const submitRequest = async (userInput) => {
-    //     const { data } = await api.get(`/locations/v1/cities/autocomplete?apikey=${key}&q=${userInput}&language=en-us`)
-    //     if (data.length === 0) {
-    //         console.log("no such location");
-    //     }
-    //     else {
-    //         setLocationsMatches(data);
-    //         setLocationsList(data);
-    //         // autoCompleteToDisplay(locationsList);
-
-    //         console.log(data);
-    //         const loc = data[0].Key;
-    //         setCity(data[0].LocalizedName);
-    //         // setLocationCode(loc);
-    //         setisLoading(true);
-    //         const df = await getDailyForcast(loc);
-    //         if (df.length === 0) {
-    //             console.log("something went wrong");
-    //         }
-    //         else {
-    //             setForecast(df.DailyForecasts);
-    //             forecastToCards(df.DailyForecasts);
-    //             setisLoading(false)
-    //         }
-    //         return data;
-    //     }
-    // }
-
 
     const autoCompleteToDisplay = async (locations) => {
         return locations.map((location) => {
@@ -66,29 +19,6 @@ const useForecast = () => {
         })
     }
 
-
-    const getDailyForcast = async (locationCode) => {
-        setisLoading(true);
-        const response = await api.get(`/forecasts/v1/daily/5day/${locationCode}?apikey=${key}`);
-        setisLoading(false);
-        const dailyData = response.data.DailyForecasts;
-        setForecast(dailyData);
-        const txt = response.data.Headline.Text;
-        setText(txt);
-        const cat = response.data.Headline.Category;
-        setCategory(cat);
-        const date = response.data.Date;
-        setToday(date);
-        return response.data;
-        // // TODO - function to toggle C/F
-    }
-
-    // useEffect(() => {
-    //     setLocationCode(locationCode);
-    //     getDailyForcast(locationCode);
-
-    // }, [setForecast, locationCode, locationsList]);// eslint-disable-line react-hooks/exhaustive-deps
-
     const forecastToCards = (forecast) => {
         return forecast.map((day) => {
             return (<Card
@@ -97,7 +27,6 @@ const useForecast = () => {
                 today={day.Date}
                 city={city}
             />)
-
         })
     }
 
@@ -115,8 +44,8 @@ const useForecast = () => {
     }
 
     return {
-        forecast, setForecast, category, text, isLoading, min, max, locationCode, key, locationsMatches, setLocationsMatches, setCity,
-        getDailyForcast, setLocationCode, locationsList, setLocationsList, autoCompleteToDisplay, showFormatedDate, today, setToday, forecastToCards, city, getDayName
+        forecast, setForecast, locationCode, locationsMatches, setLocationsMatches, setCity,
+        setLocationCode, autoCompleteToDisplay, showFormatedDate, today, setToday, forecastToCards, city, getDayName
     }
 }
 
