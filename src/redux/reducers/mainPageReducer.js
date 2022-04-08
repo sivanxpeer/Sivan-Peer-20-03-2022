@@ -3,7 +3,6 @@ import "../actions"
 
 export const defaultState = {
     isLightTheme: false,
-    btn: "Dark Mode",
     WeatherText: "",
     temp: "1",
     icon: "3",

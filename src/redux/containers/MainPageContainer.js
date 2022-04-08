@@ -36,7 +36,6 @@ const MainPageContainer = () => {
                 city={state.city}
                 forecast={forecast}
                 text={text}
-                btn={state.btn}
                 WeatherText={state.WeatherText}
                 date={state.date}
                 temp={state.temp}

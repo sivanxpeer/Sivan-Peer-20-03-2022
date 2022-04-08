@@ -9,23 +9,23 @@ import { useDispatch } from "react-redux";
 
 
 
-const MainPage = ({ WeatherText, icon, btn, date, temp ,text,setText,forecast,setForecast}) => {
+const MainPage = ({ WeatherText, icon, date, temp ,text,setText,forecast,setForecast}) => {
 
     const { isLoading, today, liked, city, setCity } = useForecast();
     const [isLightTheme, setIsLightTheme] = useState(false);
-
+    const [button,setButton] = useState("Dark Mode");
     const dispatch = useDispatch();
 
     const toggleTheme = () => {
 
         if (isLightTheme) {
             setIsLightTheme(false);
-            // setBtn("Dark Mode");
+            setButton("Dark Mode");
             // dispatch(btn:"Light Mode")
         }
         else {
             setIsLightTheme(true);
-            // setBtn("Light Mode");
+            setButton("Light Mode");
         }
     }
 
@@ -45,7 +45,7 @@ const MainPage = ({ WeatherText, icon, btn, date, temp ,text,setText,forecast,se
     return (
         <div className={isLightTheme ? "dark-mode" : "light-mode"}>
             <div className="main-page">
-                <button onClick={toggleTheme} className="btn toggle-theme">{btn}</button>
+                <button onClick={toggleTheme} className="btn toggle-theme">{button}</button>
                 {/* <button className="btn toggle-theme">{state.btn}</button> */}
                 {isLoading && "Loading....."}
                 {!isLoading && <SearchBar submitSearch={onSubmit} submitRequest={submitRequest} />}

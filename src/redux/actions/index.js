@@ -1,10 +1,10 @@
 import api from "../../apis/weatherApi";
 
 // action types for mainPage
-
-// export const GET_CONDITIONS = 'GET_CONDITIONS';
 export const GET_CURRENT_CONDITIONS = 'GET_CURRENT_CONDITIONS';
 
+//TODO: 
+// export const IS_LOADING = 'IS_LOADING';
 // export const SET_IS_LIGHT_THEME = 'SET_IS_LIGHT_THEME';
 // export const SET_BTN = 'SET_BTN';
 
@@ -12,7 +12,6 @@ export const GET_CURRENT_CONDITIONS = 'GET_CURRENT_CONDITIONS';
 // action types for useForcast
 export const SUBMIT_REQUEST = 'SUBMIT_REQUEST';
 export const GET_DAILY_FORCAST = 'GET_DAILY_FORCAST';
-//TODO: IS_LOADING
 
 const key = "ozsFAiHo7lmrqFZyTuMbT162lV7u0Ave";
 
