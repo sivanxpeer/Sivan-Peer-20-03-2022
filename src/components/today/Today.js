@@ -1,22 +1,30 @@
+import { HiHeart } from "react-icons/hi";
 import React, { useState, useEffect } from 'react'
 import useForecast from '../../hooks/useForecast';
-import { HiHeart } from "react-icons/hi";
+import { addToFavorites } from '../../redux/actions';
 import "../card/Card.css"
 
-const Today = ({ icon, WeatherText, city, date,locationCode,temp }) => {
-    const { showFormatedDate} = useForecast();
+const Today = ({ icon, WeatherText, city, date, temp, locationCode,favorites }) => {
+    const { showFormatedDate } = useForecast();
     const [liked, setLiked] = useState(false);
-
-    // const addToFavorites = (cityName) => {
-
-    // }
-
-    const handleLike = () => {
-        setLiked(!liked);
+    
+    // const [favs, setFavs] = useState([]);
+    // const dispatch = useDispatch();
+    // console.log("location code", locationCode)
+    // console.log(favorites)
+    
+    // const ls = window.localStorage;
+    
+    
+    const handleLike = (locationCode) => {
+        setLiked(!liked)
+        addToFavorites(locationCode)
+        // console.log(store.getState())
+        // return (addToFavorites(locationCode));
     }
     useEffect(() => {
-
-    }, [locationCode, city, date,liked])
+        // console.log(store.getState())
+    }, [locationCode, city, date, liked])
 
     return (
         <div className="card" onClick={handleLike}>Now
@@ -34,7 +42,7 @@ const Today = ({ icon, WeatherText, city, date,locationCode,temp }) => {
                 <div className="weather-box">
                     <div className="weather-deg">{temp}&deg;C</div>
                 </div>
-                <HiHeart onClick={handleLike} size="40px" color={liked ? "white" : "darkgrey"} className="weather-like"></HiHeart>
+                <HiHeart onClick={()=>handleLike(locationCode)} size="40px" color={liked ? "white" : "darkgrey"} className="weather-like"></HiHeart>
             </div>
         </div>
     )

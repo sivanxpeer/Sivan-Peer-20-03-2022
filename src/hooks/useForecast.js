@@ -5,10 +5,8 @@ import "../components/mainPage/MainPage.css";
 const useForecast = () => {
     const [forecast, setForecast] = useState(null);
     const [locationCode, setLocationCode] = useState("215854");
-    const [locationsMatches, setLocationsMatches] = useState([])
-
-    const [today, setToday] = useState("");
     const [city, setCity] = useState("Tel Aviv");
+    const [today, setToday] = useState("");
 
     const autoCompleteToDisplay = async (locations) => {
         return locations.map((location) => {
@@ -19,6 +17,8 @@ const useForecast = () => {
         })
     }
 
+    // eslint-disable-line react-hooks/exhaustive-deps
+
     const forecastToCards = (forecast) => {
         return forecast.map((day) => {
             return (<Card
@@ -27,6 +27,7 @@ const useForecast = () => {
                 today={day.Date}
                 city={city}
             />)
+
         })
     }
 
@@ -44,7 +45,7 @@ const useForecast = () => {
     }
 
     return {
-        forecast, setForecast, locationCode, locationsMatches, setLocationsMatches, setCity,
+        forecast, setForecast, locationCode, setCity,
         setLocationCode, autoCompleteToDisplay, showFormatedDate, today, setToday, forecastToCards, city, getDayName
     }
 }

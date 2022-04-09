@@ -12,6 +12,7 @@ export const defaultState = {
     city: "Tel Aviv",
     forecast:null,
     text:"",
+    favorites:[]
 }
 
 
@@ -20,7 +21,7 @@ const reducer = (state = defaultState, action) => {
         case "GET_CURRENT_CONDITIONS":
             return (
                 [{
-                    ...state,
+                    // ...state,
                     temp: action.payload.data[0].Temperature.Metric.Value,
                     btn: "Dark Mode",
                     WeatherText: action.payload.data[0].WeatherText,
@@ -31,18 +32,26 @@ const reducer = (state = defaultState, action) => {
             )
 
         case "SUBMIT_REQUEST":
-            return ([{
-                ...state,
+            return {
+                // ...state,
                 city: action.payload.LocalizedName,
                 locationCode: action.payload.Key
-            }])
+            }
         
         case "GET_DAILY_FORCAST":
-            return({
-                ...state,
+            return{
+                // ...state,
                 forecast: action.payload.DailyForecasts,
                 text:action.payload.Headline.Text
-            })
+            }
+        case "ADD_TO_FAVORITES":
+            return(
+                {
+                    // ...state,
+                    favorites: action.payload.city,
+                    locationCode: action.payload
+                }
+            )
         default:
             return state;
     }

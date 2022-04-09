@@ -16,8 +16,8 @@ import './index.css';
 // const storeWithMiddleware = applyMiddleware(promiseMiddleware)(createStore);
 
 //anothe way:
-const store = createStore(Reducer, {}, applyMiddleware(thunk))
-// console.log(store.getState())
+export const store = createStore(Reducer, {}, applyMiddleware(thunk))
+console.log(store.getState().mainPage)
 // const store = createStore(Reducer,)
 
 ReactDOM.render(

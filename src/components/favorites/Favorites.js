@@ -1,19 +1,26 @@
-import React, { useEffect, useState } from 'react'
-import useForecast from '../../hooks/useForecast';
+import React, { useEffect } from 'react'
+// import useForecast from '../../hooks/useForecast';
+
+// import { useSelector, useDispatch } from 'react-redux';
+// import { getCurrentConditions, getDailyForcast, addToFavorites } from '../../redux/actions';
+
 import "./Favorites.css";
 
-const Favorites = () => {
-  const { city, locationsList } = useForecast();
-  const [favorites, setFavorites] = useState([])
-
+const Favorites = ({favorites}) => {
+  // const { city } = useForecast();
+  // const [favorites, setFavorites] = useState([])
+  // const [favorites] = useSelector((state) => state.favorites);
+  // console.log("state", favorites)
+  // const favs = useSelector(state => state.favorites)
   useEffect(() => {
-    setFavorites(locationsList ? locationsList : []);
-  }, [favorites, locationsList])
+    // console.log(favs)
+    favorites && displayFavorites(favorites)
+  }, [favorites])// eslint-disable-line react-hooks/exhaustive-deps
 
   const displayFavorites = () => {
-    return favorites.map((city) => {
-      return console.log(city)
-      // return (<div>{city}</div>)
+    return favorites.map((city, locationCode) => {
+      // return console.log(city)
+      return (<div key={locationCode}>{city},{locationCode}</div>)
     })
   }
 
@@ -21,8 +28,10 @@ const Favorites = () => {
   return (
     <>
       <div className="favorites">Favorites
-        {favorites && (displayFavorites)}
-        {city}
+        <div className="favorites-list">
+          {favorites && (displayFavorites(favorites))}
+          {/* {city} */}
+        </div>
       </div>
     </>
   )

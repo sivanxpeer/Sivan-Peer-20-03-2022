@@ -9,6 +9,7 @@ const MainPageContainer = () => {
     const dispatch = useDispatch();
 
     const state = useSelector((state) => state.mainPage[0]);
+    const favorites = useSelector((state) => state.favorites);
     // console.log("state", state);
     const { locationCode } = useForecast();
     const [forecast, setForecast] = useState(null);
@@ -23,14 +24,20 @@ const MainPageContainer = () => {
         return dispatch(curr, fc);
     }
 
+    // const getIcon=(iconNumber)=>{
+
+    // }
     useEffect(() => {
         main()
+        console.log(favorites)
     }, [locationCode])// eslint-disable-line react-hooks/exhaustive-deps
 
 
     return (
         <>
             {state && <MainPage
+                favorites={state.favorites}
+                locationCode={state.locationCode}
                 setForecast={setForecast}
                 setText={setText}
                 city={state.city}
