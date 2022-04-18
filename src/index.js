@@ -10,7 +10,6 @@ import App from './App';
 import './index.css';
 
 export const store = createStore(Reducer, {}, applyMiddleware(thunk))
-console.log(store.getState().mainPage)
 
 ReactDOM.render(
   <React.StrictMode>

@@ -5,7 +5,7 @@ export const ADD_TO_FAVORITES = 'ADD_TO_FAVORITES';
 export const SUBMIT_REQUEST = 'SUBMIT_REQUEST';
 export const GET_DAILY_FORCAST = 'GET_DAILY_FORCAST';
 
-const key = "Z0EgfOA8wtrAvOHE11ry53k0G9FzrT4n";
+const key = "3grgNzDvow5Dq034iVm4C1hArk97CRo9";
 
 export const submitRequest = async (userInput) => {
     try {
