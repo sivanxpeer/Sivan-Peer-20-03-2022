@@ -9,7 +9,6 @@ const Forecast = ({ text, forecast }) => {
 
 
   useEffect(() => {
-    // return ()=>{setLiked(false)}
   }, [city, forecast, date])
 
 

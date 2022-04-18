@@ -4,26 +4,16 @@ import useForecast from '../../hooks/useForecast';
 import { addToFavorites } from '../../redux/actions';
 import "../card/Card.css"
 
-const Today = ({ icon, WeatherText, city, date, temp, locationCode,favorites }) => {
+const Today = ({ icon, WeatherText, city, date, temp, locationCode, favorites }) => {
     const { showFormatedDate } = useForecast();
     const [liked, setLiked] = useState(false);
-    
-    // const [favs, setFavs] = useState([]);
-    // const dispatch = useDispatch();
-    // console.log("location code", locationCode)
-    // console.log(favorites)
-    
-    // const ls = window.localStorage;
-    
-    
+
     const handleLike = (locationCode) => {
         setLiked(!liked)
         addToFavorites(locationCode)
-        // console.log(store.getState())
-        // return (addToFavorites(locationCode));
     }
+
     useEffect(() => {
-        // console.log(store.getState())
     }, [locationCode, city, date, liked])
 
     return (
@@ -42,7 +32,7 @@ const Today = ({ icon, WeatherText, city, date, temp, locationCode,favorites }) 
                 <div className="weather-box">
                     <div className="weather-deg">{temp}&deg;C</div>
                 </div>
-                <HiHeart onClick={()=>handleLike(locationCode)} size="40px" color={liked ? "white" : "darkgrey"} className="weather-like"></HiHeart>
+                <HiHeart onClick={() => handleLike(locationCode)} size="40px" color={liked ? "white" : "darkgrey"} className="weather-like"></HiHeart>
             </div>
         </div>
     )

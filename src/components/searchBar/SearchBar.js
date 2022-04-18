@@ -14,8 +14,6 @@ const SearchBar = ({ submitSearch, submitRequest }) => {
         setLocation(e.target.value);
         const d = await submitRequest(e.target.value);
         console.log("d",d.payload.LocalizedName)
-        // autoCompleteToDisplay(locationsList)
-        // console.log("locations list",locationsList);
     }
     
     const handleFocus = (e) => {

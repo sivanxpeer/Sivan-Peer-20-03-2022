@@ -17,8 +17,6 @@ const useForecast = () => {
         })
     }
 
-    // eslint-disable-line react-hooks/exhaustive-deps
-
     const forecastToCards = (forecast) => {
         return forecast.map((day) => {
             return (<Card
@@ -34,7 +32,6 @@ const useForecast = () => {
     const showFormatedDate = (date) => {
         let res = ''
         let currentDate = new Date(date);
-        // res = currentDate.getDate() + '/' + (currentDate.getMonth() + 1) + ', ' + (currentDate.getHours()).toPrecision(2) + ':' + (currentDate.getMinutes());
         res = currentDate.getDate() + '/' + (currentDate.getMonth() + 1);
         return res
     }

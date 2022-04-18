@@ -10,23 +10,18 @@ const MainPageContainer = () => {
 
     const state = useSelector((state) => state.mainPage[0]);
     const favorites = useSelector((state) => state.favorites);
-    // console.log("state", state);
     const { locationCode } = useForecast();
     const [forecast, setForecast] = useState(null);
     const [text, setText] = useState("");
 
     const main = async () => {
         const curr = await getCurrentConditions(locationCode)
-        // console.log("current", curr.payload)
         const fc = await getDailyForcast(locationCode)
         setForecast(fc.payload.DailyForecasts)
         setText(fc.payload.Headline.Text)
         return dispatch(curr, fc);
     }
 
-    // const getIcon=(iconNumber)=>{
-
-    // }
     useEffect(() => {
         main()
         console.log(favorites)
@@ -51,21 +46,5 @@ const MainPageContainer = () => {
         </>
     )
 }
-
-//no hooks>?
-
-// const mapStateToProps = (state) => {
-//     return state;
-// }
-
-// const mapDispatchToProps = {
-//     getCurrentConditions,
-//     submitRequest
-// }
-
-// export default connect(
-//     mapStateToProps,
-//     mapDispatchToProps
-// )(MainPageContainer)
 
 export default MainPageContainer;
