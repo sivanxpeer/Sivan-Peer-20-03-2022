@@ -10,7 +10,7 @@ const Navbar = () => {
                 <li >
                     <div className="navbar-list-left">
                         <h1 className="navbar-header">
-                            HEROLO Weather Task
+                            Weather
                         </h1>
                     </div>
                 </li>

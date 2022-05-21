@@ -3,14 +3,16 @@ import Card from "../components/card/Card"
 import "../components/mainPage/MainPage.css";
 
 const useForecast = () => {
-    const [forecast, setForecast] = useState(null);
-    const [locationCode, setLocationCode] = useState("215854");
-    const [city, setCity] = useState("Tel Aviv");
-    const [today, setToday] = useState("");
+    const telAvivCode = "215854";
+    const defaultLocation = "Tel Aviv";
+    // const [forecast, setForecast] = useState(null);
+    const [locationCode, setLocationCode] = useState(telAvivCode);
+    const [city, setCity] = useState(defaultLocation);
+    // const [today, setToday] = useState("");
 
     const autoCompleteToDisplay = async (locations) => {
         return locations.map((location) => {
-            return (<div className="auto-complete" style={{ width: "400px", height: "400px", display: "inline-block" }}>
+            return (<div className="auto-complete">
                 {location.LocalizedName}
                 {location.key}
             </div>)
@@ -42,8 +44,12 @@ const useForecast = () => {
     }
 
     return {
-        forecast, setForecast, locationCode, setCity,
-        setLocationCode, autoCompleteToDisplay, showFormatedDate, today, setToday, forecastToCards, city, getDayName
+        // setForecast,
+        // forecast,
+        // today, setToday, 
+        locationCode, setLocationCode,
+        setCity,
+        autoCompleteToDisplay, showFormatedDate,forecastToCards, city, getDayName
     }
 }
 

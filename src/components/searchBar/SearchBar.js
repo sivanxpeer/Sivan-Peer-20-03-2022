@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+// import useForecast from '../../hooks/useForecast';
 
 import "./SearchBar.css"
 
@@ -6,14 +7,16 @@ const SearchBar = ({ submitSearch, submitRequest }) => {
 
 
     const [location, setLocation] = useState("Search a City");
+    // const {autoCompleteToDisplay} = useForecast();
 
     useEffect(() => {
     }, [location])
 
     const handleInputChange = async (e) => {
         setLocation(e.target.value);
+        // autoCompleteToDisplay(e.target.value);
         const d = await submitRequest(e.target.value);
-        console.log("d",d.payload.LocalizedName)
+        console.log("d",d)
     }
     
     const handleFocus = (e) => {

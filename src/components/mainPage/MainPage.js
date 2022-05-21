@@ -5,17 +5,21 @@ import Forecast from "../forecast/Forecast";
 import useForecast from "../../hooks/useForecast";
 import Today from "../today/Today";
 import { getCurrentConditions, submitRequest, getDailyForcast } from '../../redux/actions';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 
 
-const MainPage = ({ WeatherText, icon, date, temp, text, setText, forecast, setForecast, liked, locationCode, favorites }) => {
+const MainPage = ({ WeatherText, icon, date, temp, text, setText, forecast, setForecast, liked, favorites }) => {
 
-    const { isLoading, today, city, setCity } = useForecast();
+    const { isLoading, today } = useForecast();
     const [isLightTheme, setIsLightTheme] = useState(false);
     const [button, setButton] = useState("Dark Mode");
-    const [tempLocationCode, setTempLocationCode] = useState("")
+    // const [tempLocationCode, setTempLocationCode] = useState("")
     const dispatch = useDispatch();
+
+    const locationKey = useSelector((state) => state.mainPage.locationCode)
+    const city = useSelector((state) => state.mainPage.city)
+    console.log(locationKey)
 
     const toggleTheme = () => {
 
@@ -30,14 +34,9 @@ const MainPage = ({ WeatherText, icon, date, temp, text, setText, forecast, setF
     }
 
     const onSubmit = async (location) => {
-        const d = await submitRequest(location);
-        setTempLocationCode(d.payload.Key);
-        setCity(d.payload.LocalizedName);
-        const currCond = await getCurrentConditions(d.payload.Key)
-        const s = await getDailyForcast(d.payload.Key);
-        setForecast(s.payload.DailyForecasts)
-        setText(s.payload.Headline.Text)
-        return dispatch(currCond, d, s);
+        dispatch(submitRequest(location));
+        dispatch(getCurrentConditions(locationKey))
+        dispatch(getDailyForcast(locationKey));
     }
 
     return (
@@ -46,7 +45,7 @@ const MainPage = ({ WeatherText, icon, date, temp, text, setText, forecast, setF
                 <button onClick={toggleTheme} className="btn toggle-theme">{button}</button>
                 {isLoading && "Loading....."}
                 {!isLoading && <SearchBar submitSearch={onSubmit} submitRequest={submitRequest} />}
-                {<Today liked={liked} isLightTheme={isLightTheme} WeatherText={WeatherText} temp={temp} favorites={favorites} locationCode={tempLocationCode} today={today} icon={icon} city={city} date={date} />}
+                {<Today liked={liked} isLightTheme={isLightTheme} WeatherText={WeatherText} temp={temp} favorites={favorites} locationCode={locationKey} today={today} icon={icon} city={city} date={date} />}
                 {forecast && <Forecast forecast={forecast} text={text} />}
             </div>
         </div>

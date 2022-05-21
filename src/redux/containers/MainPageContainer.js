@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import MainPage from '../../components/mainPage/MainPage';
 import useForecast from '../../hooks/useForecast';
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,40 +8,39 @@ import { getCurrentConditions, getDailyForcast } from '../actions';
 const MainPageContainer = () => {
     const dispatch = useDispatch();
 
-    const state = useSelector((state) => state.mainPage[0]);
-    const favorites = useSelector((state) => state.favorites);
+    const mainPageState = useSelector((state) => state.mainPage);
+    const current = useSelector((state) => state.currentConditionsReducer.currentCondition)
+    const forecast = useSelector((state) => state.dailyForecastReducer)
+    // console.log(mainPageState);
+    // console.log("current",current);
+    // console.log(forecast);
+
+
+    // const favorites = useSelector((state) => state.favorites);
     const { locationCode } = useForecast();
-    const [forecast, setForecast] = useState(null);
-    const [text, setText] = useState("");
 
     const main = async () => {
-        const curr = await getCurrentConditions(locationCode)
-        const fc = await getDailyForcast(locationCode)
-        setForecast(fc.payload.DailyForecasts)
-        setText(fc.payload.Headline.Text)
-        return dispatch(curr, fc);
+        dispatch(getCurrentConditions(locationCode));
+        console.log(mainPageState);
+        dispatch(getDailyForcast(locationCode))
     }
 
     useEffect(() => {
         main()
-        console.log(favorites)
+        // console.log(favorites)
     }, [locationCode])// eslint-disable-line react-hooks/exhaustive-deps
 
 
     return (
         <>
-            {state && <MainPage
-                favorites={state.favorites}
-                locationCode={state.locationCode}
-                setForecast={setForecast}
-                setText={setText}
-                city={state.city}
+            {mainPageState && <MainPage
+                favorites={mainPageState.favorites}
+                city={mainPageState.city}
                 forecast={forecast}
-                text={text}
-                WeatherText={state.WeatherText}
-                date={state.date}
-                temp={state.temp}
-                icon={String(state.icon).length !== 2 ? `https://developer.accuweather.com/sites/default/files/0${state.icon}-s.png` : `https://developer.accuweather.com/sites/default/files/${state.icon}-s.png`}
+                WeatherText={current.WeatherText}
+                date={current.LocalObservationDateTime}
+                temp={current?.Temperature?.Metric?.Value}
+                icon={String(current.WeatherIcon)?.length !== 2 ? `https://developer.accuweather.com/sites/default/files/0${current.WeatherIcon}-s.png` : `https://developer.accuweather.com/sites/default/files/${current.WeatherIcon}-s.png`}
             />}
         </>
     )

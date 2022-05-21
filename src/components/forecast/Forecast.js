@@ -2,11 +2,15 @@ import React, { useEffect } from 'react'
 import "./Forecast.css";
 import useForecast from "../../hooks/useForecast";
 import Card from '../card/Card';
+import { useSelector } from 'react-redux';
 
 
-const Forecast = ({ text, forecast }) => {
+const Forecast = () => {
   const { city, date } = useForecast();
 
+  const forecast = useSelector((state)=>state.dailyForecastReducer.forecast)
+  const text = useSelector((state)=>state.dailyForecastReducer.text)
+  // console.log(forecast)
 
   useEffect(() => {
   }, [city, forecast, date])

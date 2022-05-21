@@ -2,47 +2,30 @@
 import "../actions"
 
 export const defaultState = {
-    isLightTheme: false,
-    WeatherText: "",
-    temp: "1",
-    icon: "3",
-    current: "",
-    date: "",
-    locationCode: "215854",
-    city: "Tel Aviv",
-    forecast:null,
-    text:"",
-    favorites:[]
+    // isLightTheme: false,
+    // WeatherText: "",
+    // temp: "1",
+    // icon: "3",
+    // current: "",
+    // date: "",
+    // locationCode: "215854",
+    // city: "Tel Aviv",
+    // forecast:null,
+    // text:"",
+    // favorites:[]
 }
 
-
-const reducer = (state = defaultState, action) => {
+const TelAvivLocationCode = 215854;
+export const reducer = (state = { locationCode: TelAvivLocationCode, city: "Tel Aviv" }, action) => {
     switch (action.type) {
-        case "GET_CURRENT_CONDITIONS":
-            return (
-                [{
-                    temp: action.payload.data[0].Temperature.Metric.Value,
-                    btn: "Dark Mode",
-                    WeatherText: action.payload.data[0].WeatherText,
-                    date: action.payload.data[0].LocalObservationDateTime,
-                    icon: action.payload.data[0].WeatherIcon,
-                    current: action.payload.data[0]
-                }]
-            )
-
         case "SUBMIT_REQUEST":
             return {
                 city: action.payload.LocalizedName,
                 locationCode: action.payload.Key
             }
-        
-        case "GET_DAILY_FORCAST":
-            return{
-                forecast: action.payload.DailyForecasts,
-                text:action.payload.Headline.Text
-            }
+            
         case "ADD_TO_FAVORITES":
-            return(
+            return (
                 {
                     favorites: action.payload.city,
                     locationCode: action.payload
@@ -53,4 +36,4 @@ const reducer = (state = defaultState, action) => {
     }
 }
 
-export default reducer;
+// export default reducer;
