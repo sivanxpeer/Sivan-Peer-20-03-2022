@@ -1,3 +1,3 @@
-## weather app  - home assignment 
+## weather app 
 using accuweather API
 
