@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 // import useForecast from '../../hooks/useForecast';
-import { getCurrentConditions, submitRequest, getDailyForcast } from '../../redux/actions';
+import { submitRequest } from '../../redux/actions';
 import { useDispatch, useSelector } from "react-redux";
 
 import "./SearchBar.css"

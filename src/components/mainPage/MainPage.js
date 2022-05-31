@@ -4,7 +4,7 @@ import SearchBar from "../searchBar/SearchBar";
 import Forecast from "../forecast/Forecast";
 import useForecast from "../../hooks/useForecast";
 import Today from "../today/Today";
-import { getCurrentConditions, submitRequest, getDailyForcast ,fetchNewCityWeather} from '../../redux/actions';
+import { submitRequest, getDailyForcast} from '../../redux/actions';
 import { useDispatch, useSelector } from "react-redux";
 
 
