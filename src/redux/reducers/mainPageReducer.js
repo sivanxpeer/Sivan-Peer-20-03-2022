@@ -23,12 +23,25 @@ export const reducer = (state = { locationCode: TelAvivLocationCode, city: "Tel 
                 city: action.payload.LocalizedName,
                 locationCode: action.payload.Key
             }
-            
+        default:
+            return state;
+    }
+}
+
+//move to a different file
+export const favoritesReducer = (state = {favorites:[] }, action) => {
+    switch (action.type) {
         case "ADD_TO_FAVORITES":
             return (
                 {
-                    favorites: action.payload.city,
-                    locationCode: action.payload
+                    favorites: action.payload.city
+                    // locationCode: action.payload
+                }
+            )
+        case "REMOVE_FROM_FAVORITES":
+            return(
+                {
+                    favorites: action.payload.city
                 }
             )
         default:

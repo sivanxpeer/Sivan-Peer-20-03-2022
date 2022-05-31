@@ -21,6 +21,7 @@ const useForecast = () => {
 
     const forecastToCards = (forecast) => {
         return forecast.map((day) => {
+            // console.log(day)
             return (<Card
                 key={day.Date}
                 text={day.Day.IconPhrase}
@@ -49,7 +50,8 @@ const useForecast = () => {
         // today, setToday, 
         locationCode, setLocationCode,
         setCity,
-        autoCompleteToDisplay, showFormatedDate,forecastToCards, city, getDayName
+        city,
+        autoCompleteToDisplay, showFormatedDate,forecastToCards, getDayName
     }
 }
 

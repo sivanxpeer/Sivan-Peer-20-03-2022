@@ -4,6 +4,8 @@ import useForecast from '../../hooks/useForecast';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCurrentConditions, getDailyForcast } from '../actions';
 
+// don't need both components- mainPageContainer and mainPage 
+
 
 const MainPageContainer = () => {
     const dispatch = useDispatch();
@@ -25,9 +27,22 @@ const MainPageContainer = () => {
         dispatch(getDailyForcast(locationCode))
     }
 
+    const getWeatherIcon = () => {
+        if (String(current.WeatherIcon) === "undefined") {
+            return 0;
+        }
+        else if (String(current.WeatherIcon).length !== 2) {
+            return `https://developer.accuweather.com/sites/default/files/0${current.WeatherIcon}-s.png`;
+        }
+        else {
+            return `https://developer.accuweather.com/sites/default/files/${current.WeatherIcon}-s.png`
+        }
+
+    }
+
     useEffect(() => {
         main()
-        // console.log(favorites)
+        // console.log(current)
     }, [locationCode])// eslint-disable-line react-hooks/exhaustive-deps
 
 
@@ -39,8 +54,8 @@ const MainPageContainer = () => {
                 forecast={forecast}
                 WeatherText={current.WeatherText}
                 date={current.LocalObservationDateTime}
-                temp={current?.Temperature?.Metric?.Value}
-                icon={String(current.WeatherIcon)?.length !== 2 ? `https://developer.accuweather.com/sites/default/files/0${current.WeatherIcon}-s.png` : `https://developer.accuweather.com/sites/default/files/${current.WeatherIcon}-s.png`}
+                temp={current.Temperature?.Metric?.Value}
+                icon={getWeatherIcon(current.WeatherIcon)}
             />}
         </>
     )
