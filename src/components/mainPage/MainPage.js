@@ -4,7 +4,7 @@ import SearchBar from "../searchBar/SearchBar";
 import Forecast from "../forecast/Forecast";
 import useForecast from "../../hooks/useForecast";
 import Today from "../today/Today";
-import { submitRequest, getDailyForcast} from '../../redux/actions';
+import { submitRequest, getDailyForcast } from '../../redux/actions';
 import { useDispatch, useSelector } from "react-redux";
 
 
@@ -31,6 +31,7 @@ const MainPage = ({ WeatherText, icon, date, temp, text, forecast, liked, favori
         setButton("Light Mode");
 
     }
+
     const fetchNewCityWeather = (locationName) => {
         return (dispatch) => {
             dispatch(submitRequest(locationName)).then((locationInfo) => {
@@ -39,9 +40,9 @@ const MainPage = ({ WeatherText, icon, date, temp, text, forecast, liked, favori
             });
         };
     }
-    
-    const onSubmit = async (location) => {
-        console.log({location})
+
+    const onSubmit = (location) => {
+        console.log({ location })
         dispatch(fetchNewCityWeather(location));
     }
 
@@ -49,9 +50,7 @@ const MainPage = ({ WeatherText, icon, date, temp, text, forecast, liked, favori
         <div className={isLightTheme ? "dark-mode" : "light-mode"}>
             <div className="main-page">
                 <button onClick={toggleTheme} className="btn toggle-theme">{button}</button>
-                {isLoading && "Loading....."}
-                {/* {!isLoading && <SearchBar submitSearch={onSubmit} submitRequest={submitRequest} />} */}
-                {!isLoading && <SearchBar onSubmit={onSubmit} />}
+                {isLoading ? "Loading..." : <SearchBar onSubmit={onSubmit} />}
                 {<Today liked={liked} isLightTheme={isLightTheme} WeatherText={WeatherText} temp={temp} favorites={favorites} locationCode={locationKey} today={today} icon={icon} city={city} date={date} />}
                 {forecast && <Forecast text={text} />}
             </div>

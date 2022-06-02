@@ -13,10 +13,6 @@ const MainPageContainer = () => {
     const mainPageState = useSelector((state) => state.mainPage);
     const current = useSelector((state) => state.currentConditionsReducer.currentCondition)
     const forecast = useSelector((state) => state.dailyForecastReducer)
-    // console.log(mainPageState);
-    // console.log("current",current);
-    // console.log(forecast);
-
 
     // const favorites = useSelector((state) => state.favorites);
     const { locationCode } = useForecast();

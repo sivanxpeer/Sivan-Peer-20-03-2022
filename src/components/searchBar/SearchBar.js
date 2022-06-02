@@ -5,10 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import "./SearchBar.css"
 
-//refactor to redux 
-//change this component to dispatch the location with the action creator of submitRequest on mainPageReducer  
-
-
 const SearchBar = ({onSubmit}) => {
 
     const locationCode = useSelector((state) => state.mainPage.locationCode)
@@ -33,13 +29,6 @@ const SearchBar = ({onSubmit}) => {
         e.preventDefault();
         dispatch(submitRequest(location));
         onSubmit(location);
-
-
-        // this happens on second click  ---why
-        //on the first click i get the location i need to then pass it ?
-
-        // dispatch(getCurrentConditions(locationCode));
-        // dispatch(getDailyForcast(locationCode));
     }
 
     return (
