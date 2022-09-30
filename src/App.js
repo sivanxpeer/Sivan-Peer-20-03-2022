@@ -12,7 +12,7 @@ function App() {
   // const current = useSelector((state)=>state.mainPage.currentCondition)
   console.log(forecast)
   // console.log(current)
-  const TRACKING_ID = "4109337283"; // OUR_TRACKING_ID
+  const TRACKING_ID = "G-D6R3JSHHX1"; // OUR_TRACKING_ID
   ReactGA.initialize(TRACKING_ID);
 
   return (
