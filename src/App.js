@@ -1,5 +1,4 @@
 import './App.css';
-// import ReactGA from 'react-ga';
 import Favorites from './components/favorites/Favorites';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -11,7 +10,6 @@ function App() {
   const forecast = useSelector((state) => state.mainPage.forecast)
   // const current = useSelector((state)=>state.mainPage.currentCondition)
   console.log(forecast)
-  // console.log(current)
 
   return (
     <div className="App">
