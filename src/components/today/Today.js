@@ -3,18 +3,26 @@ import React, { useState, useEffect } from 'react'
 import useForecast from '../../hooks/useForecast';
 import { addToFavorites } from '../../redux/actions';
 import "../card/Card.css"
+import { useDispatch, useSelector } from "react-redux";
 
-const Today = ({ icon, WeatherText, city, date, temp, locationCode, favorites }) => {
+const Today = ({ icon, WeatherText, city, date, temp, locationCode }) => {
     const { showFormatedDate } = useForecast();
     const [liked, setLiked] = useState(false);
+    const dispatch = useDispatch();
+    
+    const favoritesState = useSelector((state) => state.favoritesReducer);
 
-    const handleLike = (locationCode) => {
+    const handleLike = (e) => {
         setLiked(!liked)
-        addToFavorites(locationCode)
+        const cityTemp = e.target.parentElement.children[0].innerHtml;
+        console.log(e.target.parentElement.children[0])
+        dispatch(addToFavorites(favoritesState,{locationCode,city}))
+        // addToFavorites(locationCode)
     }
 
     useEffect(() => {
-    }, [locationCode, city, date, liked])
+        console.log(favoritesState)
+    }, [locationCode, city, date, liked,favoritesState])
 
     return (
         <div className="card" onClick={handleLike}>Now

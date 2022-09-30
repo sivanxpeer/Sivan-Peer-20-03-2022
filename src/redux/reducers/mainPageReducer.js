@@ -34,8 +34,8 @@ export const favoritesReducer = (state = {favorites:[] }, action) => {
         case "ADD_TO_FAVORITES":
             return (
                 {
-                    favorites: action.payload.city
-                    // locationCode: action.payload
+                    // favorites: [...state.favorites,{city:action.payload.city,locationCode:action.payload.locationCode}]
+                    favorites:[...state.favorites, {...action.payload}]
                 }
             )
         case "REMOVE_FROM_FAVORITES":

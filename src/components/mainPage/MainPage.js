@@ -19,7 +19,7 @@ const MainPage = ({ WeatherText, icon, date, temp, text, forecast, liked, favori
     const locationKey = useSelector((state) => state.mainPage.locationCode)
     const city = useSelector((state) => state.mainPage.city)
 
-    console.log(locationKey, city)
+    // console.log(locationKey, city)
 
     const toggleTheme = () => {
         if (isLightTheme) {

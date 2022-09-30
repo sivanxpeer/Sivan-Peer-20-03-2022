@@ -5,7 +5,6 @@ export const ADD_TO_FAVORITES = 'ADD_TO_FAVORITES';
 export const SUBMIT_REQUEST = 'SUBMIT_REQUEST';
 export const GET_DAILY_FORCAST = 'GET_DAILY_FORCAST';
 export const REMOVE_FROM_FAVORITES = 'REMOVE_FROM_FAVORITES';
-export const FETCH_NEW_CITY_WEATHER = 'FETCH_NEW_CITY_WEATHER';
 
 const key = "FeBqlSGCa18EN9o5kS4E5709GqiUVOmb";
 
@@ -43,12 +42,14 @@ export const getCurrentConditions = (locationCode) => async (dispatch) => {
 }
 
 //TODO -
-export const addToFavorites = (locationCode) => {
-    return {
+export const addToFavorites = (favorites,locationCode,city) =>async(dispatch)=> {
+    console.log("add:",locationCode,city)
+    dispatch( {
         type: "ADD_TO_FAVORITES",
-        payload: { locationCode: locationCode }
-    }
+        payload:  [...favorites,locationCode, city]
+    })
 }
+
 
 //TODO- 
 export const removeFromFavorites = (locationCode) => {
@@ -57,14 +58,5 @@ export const removeFromFavorites = (locationCode) => {
         payload: { locationCode: locationCode }
     }
 }
-
-// export const fetchNewCityWeather = (locationName) => {
-//     return (dispatch) => {
-//         dispatch(submitRequest(locationName)).then((locationInfo) => {
-//             console.log({ locationInfo })
-//             dispatch(getDailyForcast(locationInfo[0].Key));
-//         });
-//     };
-// }
 
 //TODO - autocomplete!
