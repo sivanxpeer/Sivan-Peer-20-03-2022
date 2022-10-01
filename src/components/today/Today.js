@@ -15,7 +15,7 @@ const Today = ({ icon, WeatherText, city, date, temp, locationCode }) => {
     const handleLike = (e) => {
         setLiked(!liked)
         const cityTemp = e.target.parentElement.children[0].innerHtml;
-        console.log(e.target.parentElement.children[0])
+        console.log(e.target.parentElement.children[0],cityTemp)
         dispatch(addToFavorites(favoritesState,{locationCode,city}))
         // addToFavorites(locationCode)
     }
